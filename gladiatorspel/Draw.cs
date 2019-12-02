@@ -49,7 +49,7 @@ namespace gladiatorspel
             int TitlePos = (WIDTH / 2) - (Title.Length / 2);
             Console.SetCursorPosition(TitlePos, 0);
             Console.Write(Title);
-            Console.SetCursorPosition(Console.WindowWidth, Console.WindowHeight);
+            Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
         }
 
         public static void ShowText(String text, int line)
@@ -57,7 +57,7 @@ namespace gladiatorspel
             const int padding = 2;
             Console.SetCursorPosition(padding, line);
             Console.Write(text.PadRight(Console.WindowWidth - padding));
-            Console.SetCursorPosition(Console.WindowWidth, Console.WindowHeight);
+            Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
         }
 
         public static String ShowTextInput(String text, int line)
@@ -65,7 +65,7 @@ namespace gladiatorspel
             const int padding = 2;
             Console.SetCursorPosition(padding, line);
             Console.Write(text.PadRight(Console.WindowWidth - padding));
-            Console.SetCursorPosition(Console.WindowWidth, Console.WindowHeight);
+            Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
             String input = "";
             while (true)
             {
