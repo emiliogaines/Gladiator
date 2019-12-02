@@ -7,6 +7,7 @@ namespace gladiatorspel
     class Gladiator
     {
         Random random = new Random();
+        public string dö;
         public string name; 
         public int baseHealth, health; 
         public int baseStrength, strength; 
