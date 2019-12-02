@@ -36,7 +36,7 @@ namespace gladiatorspel
         }
         public void checkInventory()
         {
-            Console.WriteLine(Item.inventoryList); //print array of items
+            //Console.WriteLine(Item.inventoryList); ///print array of items TODO:  FIX!!!
 
         }
 

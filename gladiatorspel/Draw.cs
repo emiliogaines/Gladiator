@@ -3,7 +3,7 @@ namespace gladiatorspel
 {
     public class Draw
     {
-        public static void initWindow()
+        public static void InitWindow()
         {
             const String Title = "[ GLADIATOR ]";
             int WIDTH = Console.WindowWidth;
@@ -45,14 +45,31 @@ namespace gladiatorspel
             Console.SetCursorPosition(Console.WindowWidth, Console.WindowHeight);
         }
 
-        public static void updateText(String text, int line)
+        public static void ShowText(String text, int line)
         {
-            if (line < 1) return;
-            const int STARTX = 2;
-            const int STARTY = 0;
-            Console.SetCursorPosition(STARTX, STARTY + line);
-            Console.Write(text.PadRight(Console.WindowWidth - STARTX));
+            const int padding = 2;
+            Console.SetCursorPosition(padding, line);
+            Console.Write(text.PadRight(Console.WindowWidth - padding));
             Console.SetCursorPosition(Console.WindowWidth, Console.WindowHeight);
+        }
+
+        public static String ShowTextInput(String text, int line)
+        {
+            const int padding = 2;
+            Console.SetCursorPosition(padding, line);
+            Console.Write(text.PadRight(Console.WindowWidth - padding));
+            Console.SetCursorPosition(Console.WindowWidth, Console.WindowHeight);
+            String input = "";
+            while (true)
+            {
+                var key = Console.ReadKey(true);
+                if (key.Key == ConsoleKey.Enter) break;
+                if (key.Key == ConsoleKey.Backspace && input.Length > 0) input.Remove(input.Length - 1, 1);
+                else if (key.Key != ConsoleKey.Backspace) input += (key.KeyChar);
+                Console.SetCursorPosition(padding + text.Length, line);
+                Console.Write(input);
+            }
+            return input;
         }
     }
 }
