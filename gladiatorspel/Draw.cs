@@ -10,7 +10,11 @@ namespace gladiatorspel
             int WIDTH = Console.WindowWidth;
             int HEIGHT = Console.WindowHeight;
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) Console.SetWindowSize(WIDTH, HEIGHT);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
+                Console.SetWindowSize(WIDTH, HEIGHT);
+                Console.SetBufferSize(WIDTH, HEIGHT);
+            }
+            
 
             String topLeftCorner = "╔";
             String topRightCorner = "╗";
