@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 namespace gladiatorspel
 {
     public class Draw
@@ -8,6 +9,8 @@ namespace gladiatorspel
             const String Title = "[ GLADIATOR ]";
             int WIDTH = Console.WindowWidth;
             int HEIGHT = Console.WindowHeight;
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) Console.SetWindowSize(WIDTH, HEIGHT);
 
             String topLeftCorner = "╔";
             String topRightCorner = "╗";
