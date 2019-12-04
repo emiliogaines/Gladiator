@@ -4,15 +4,16 @@ namespace gladiatorspel
 {
     public class Draw
     {
+        const String Title = "[ GLADIATOR ]";
+        private static int WIDTH;
+        private static int HEIGHT;
         public static void InitWindow()
         {
-            const String Title = "[ GLADIATOR ]";
-            int WIDTH = Console.WindowWidth;
-            int HEIGHT = Console.WindowHeight;
-
+            WIDTH = Console.WindowWidth;
+            HEIGHT = Console.WindowHeight;
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
+                Console.SetBufferSize(WIDTH + 1, HEIGHT + 1);
                 Console.SetWindowSize(WIDTH, HEIGHT);
-                Console.SetBufferSize(WIDTH, HEIGHT);
             }
             
 
@@ -27,54 +28,52 @@ namespace gladiatorspel
             {
                 Console.SetCursorPosition(i, 0);
                 Console.Write(lyingEdge);
-                Console.SetCursorPosition(i, HEIGHT - 1);
+                Console.SetCursorPosition(i, HEIGHT);
                 Console.Write(lyingEdge);
             }
             for (int i = 0; i < HEIGHT; i++)
             {
                 Console.SetCursorPosition(0, i);
                 Console.Write(standingEdge);
-                Console.SetCursorPosition(WIDTH - 1, i);
+                Console.SetCursorPosition(WIDTH, i);
                 Console.Write(standingEdge);
             }
             Console.SetCursorPosition(0, 0);
             Console.Write(topLeftCorner);
             Console.SetCursorPosition(WIDTH, 0);
             Console.Write(topRightCorner);
-            Console.SetCursorPosition(0, HEIGHT - 1);
+            Console.SetCursorPosition(0, HEIGHT);
             Console.Write(bottomLeftCorner);
-            Console.SetCursorPosition(WIDTH, HEIGHT - 1);
+            Console.SetCursorPosition(WIDTH, HEIGHT);
             Console.Write(bottomRightCorner);
 
             int TitlePos = (WIDTH / 2) - (Title.Length / 2);
             Console.SetCursorPosition(TitlePos, 0);
             Console.Write(Title);
-            Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
+            Console.SetCursorPosition(WIDTH, HEIGHT);
         }
 
         public static void ShowText(String text, int line)
         {
             const int padding = 2;
             Console.SetCursorPosition(padding, line);
-            Console.Write(text.PadRight(Console.WindowWidth - padding));
-            Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
+            Console.Write(text.PadRight(WIDTH - padding));
+            Console.SetCursorPosition(WIDTH - 1, line);
+            Console.Write("║");
+            Console.SetCursorPosition(WIDTH, HEIGHT);
         }
 
         public static String ShowTextInput(String text, int line)
         {
-            const int padding = 2;
-            Console.SetCursorPosition(padding, line);
-            Console.Write(text.PadRight(Console.WindowWidth - padding));
-            Console.SetCursorPosition(Console.WindowWidth - 1, Console.WindowHeight - 1);
+            ShowText(text, line);
             String input = "";
             while (true)
             {
                 var key = Console.ReadKey(true);
                 if (key.Key == ConsoleKey.Enter) break;
                 if (key.Key == ConsoleKey.Backspace && input.Length > 0) input.Remove(input.Length - 1, 1);
-                else if (key.Key != ConsoleKey.Backspace) input += (key.KeyChar);
-                Console.SetCursorPosition(padding + text.Length, line);
-                Console.Write(input);
+                else if (key.Key != ConsoleKey.Backspace) input += key.KeyChar;
+                ShowText(text + input, line);
             }
             return input;
         }
