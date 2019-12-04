@@ -37,7 +37,7 @@ namespace gladiatorspel
         }
         public void checkInventory()
         {
-            foreach (int i in inventory.inventoryList) Console.WriteLine(inventory.inventoryList[i]);
+            foreach (Item item in inventory.inventoryList) Console.WriteLine(item.Name);
         }
 
     }
