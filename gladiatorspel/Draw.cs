@@ -67,7 +67,7 @@ namespace gladiatorspel
         {
             const int padding = 2;
             Console.SetCursorPosition(padding, line);
-            Console.Write(text.PadLeft(WIDTH - paddingFromEnd));
+            Console.Write(text.PadLeft(WIDTH - padding - 2));
             Console.SetCursorPosition(WIDTH, line);
             Console.Write("║");
             Console.SetCursorPosition(WIDTH, HEIGHT);
@@ -93,19 +93,20 @@ namespace gladiatorspel
             ShowText(gladiator.name + " [HP: " + gladiator.health + " Attack: " + gladiator.strength + "]", HEIGHT - 2);
         }
 
-        public static void ShowPlayerInventory(Inventory inventory)
+        public static void ShowPlayerInventory(Gladiator player)
         {
-            int maxWidth = 0;
-            foreach(Item item in inventory.inventoryList)
+            int MaxWidth = 0;
+            int Length = player.inventory.inventoryList.Count;
+            foreach (Item item in player.inventory.inventoryList)
             {
-                if (item.Name.Length > maxWidth) {
-                    maxWidth = item.Name.Length;
+                if (item.Name.Length > MaxWidth) {
+                    MaxWidth = item.Name.Length;
                 }
                 
             }
-            for(int i = 0; i < inventory.inventoryList.Count; i++)
+            for(int i = 0; i < player.inventory.inventoryList.Count; i++)
             {
-               // Draw.ShowText()
+                Draw.ShowText((player.inventory.inventoryList[i] as Item).Name, HEIGHT - 1 - Length + i, 10);
             }
         }
     }
