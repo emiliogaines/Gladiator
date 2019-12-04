@@ -10,7 +10,7 @@ namespace gladiatorspel
         public string name; 
         public int baseHealth, health; 
         public int baseStrength, strength; 
-x
+
         public Gladiator(string Name)
         {
             name = Name;
