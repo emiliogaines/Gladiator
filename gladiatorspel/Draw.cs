@@ -39,11 +39,11 @@ namespace gladiatorspel
             }
             Console.SetCursorPosition(0, 0);
             Console.Write(topLeftCorner);
-            Console.SetCursorPosition(WIDTH - 1, 0);
+            Console.SetCursorPosition(WIDTH, 0);
             Console.Write(topRightCorner);
             Console.SetCursorPosition(0, HEIGHT - 1);
             Console.Write(bottomLeftCorner);
-            Console.SetCursorPosition(WIDTH - 1, HEIGHT - 1);
+            Console.SetCursorPosition(WIDTH, HEIGHT - 1);
             Console.Write(bottomRightCorner);
 
             int TitlePos = (WIDTH / 2) - (Title.Length / 2);
