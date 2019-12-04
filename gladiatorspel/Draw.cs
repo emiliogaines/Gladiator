@@ -63,6 +63,16 @@ namespace gladiatorspel
             Console.SetCursorPosition(WIDTH, HEIGHT);
         }
 
+        public static void ShowText(String text, int line, int paddingFromEnd)
+        {
+            const int padding = 2;
+            Console.SetCursorPosition(padding, line);
+            Console.Write(text.PadLeft(WIDTH - paddingFromEnd));
+            Console.SetCursorPosition(WIDTH, line);
+            Console.Write("║");
+            Console.SetCursorPosition(WIDTH, HEIGHT);
+        }
+
         public static String ShowTextInput(String text, int line)
         {
             ShowText(text, line);
@@ -88,7 +98,14 @@ namespace gladiatorspel
             int maxWidth = 0;
             foreach(Item item in inventory.inventoryList)
             {
-                maxWidth = if (item.name.length > maxWidth) maxWidth;
+                if (item.Name.Length > maxWidth) {
+                    maxWidth = item.Name.Length;
+                }
+                
+            }
+            for(int i = 0; i < inventory.inventoryList.Count; i++)
+            {
+                Draw.ShowText()
             }
         }
     }
