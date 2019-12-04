@@ -10,10 +10,11 @@ namespace gladiatorspel
         public int BonusHealth { get; }
         public int BonusStrength { get; }
 
+        public string Name { get; }
 
-
-        public Item(int health, int strength)
+        public Item(string name, int health, int strength)
         {
+            Name = name;
             BonusHealth = health;
             BonusStrength = strength;
         }
