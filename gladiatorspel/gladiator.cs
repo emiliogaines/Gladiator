@@ -6,7 +6,7 @@ namespace gladiatorspel
 {
     class Gladiator
     {
-        Random random = new Random();
+        readonly Random random = new Random();
         public string name; 
         public int baseHealth, health; 
         public int baseStrength, strength; 
@@ -19,7 +19,7 @@ namespace gladiatorspel
         }
 
 
-        public void attack(Enemy enemy)
+        public void Attack(Enemy enemy)
         {
 
             Console.WriteLine("You attack!");
@@ -29,12 +29,12 @@ namespace gladiatorspel
 
 
         }
-        public void equipItem(Item item)
+        public void EquipItem(Item item)
         {
             health = baseHealth + item.Health;
             strength = baseStrength + item.Strength;
         }
-        public void checkInventory()
+        public void CheckInventory()
         {
             //Console.WriteLine(Item.inventoryList); ///print array of items TODO:  FIX!!!
 
