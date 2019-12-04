@@ -6,15 +6,19 @@ namespace gladiatorspel
 {
     public class Enemy
     {
-        Random random = new Random();
+        readonly Random random = new Random();
 
         public string name;
         public int baseHealth, health;
         public int baseStrength, strength;
+        private readonly string[] EnemyNames = { "Gurra", "Kalle", "MioMinMio", "Mao the Red", "SidVicious", "Jack the Shining", "Hannibal" };
+        
+        
 
-        public Enemy(string Name, int level)
+
+        public Enemy(int level)
         {
-            name = Name;
+            name = EnemyNames[random.Next(EnemyNames.Length)];
             baseHealth = random.Next(10,21);
             baseStrength = random.Next(1,4);
 
@@ -22,9 +26,7 @@ namespace gladiatorspel
             strength = baseStrength * level;
         }
 
-
-
-        public void attack(Gladiator player)
+        public void Attack(Gladiator player)
         {
 
             Console.WriteLine("{0} attacks!", name);
