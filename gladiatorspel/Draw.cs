@@ -82,5 +82,14 @@ namespace gladiatorspel
         {
             ShowText(gladiator.name + " [HP: " + gladiator.health + " Attack: " + gladiator.strength + "]", HEIGHT - 2);
         }
+
+        public static void ShowPlayerInventory(Inventory inventory)
+        {
+            int maxWidth = 0;
+            foreach(Item item in inventory.inventoryList)
+            {
+                maxWidth = if (item.name.length > maxWidth) maxWidth;
+            }
+        }
     }
 }
