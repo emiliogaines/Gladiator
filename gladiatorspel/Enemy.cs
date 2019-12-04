@@ -4,7 +4,7 @@ using System.Text;
 
 namespace gladiatorspel
 {
-    class Enemy
+    public class Enemy
     {
         Random random = new Random();
 

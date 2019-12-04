@@ -5,7 +5,7 @@ using System.Text;
 
 namespace gladiatorspel
 {
-    class Item
+    public class Item
     {
         public int Health { get; }
         public int Strength { get; }

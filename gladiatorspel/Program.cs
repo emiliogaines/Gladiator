@@ -13,6 +13,8 @@ namespace gladiatorspel
             name = Draw.ShowTextInput("What is your name?: ", 2);
             Draw.ShowText("That is a shit name. Please step into the arena " + name, 3);
             Gladiator Player = new Gladiator(name);
+            Draw.ShowPlayerStats(Player);
+            Player.checkInventory();
 
             while (true) { }
 
