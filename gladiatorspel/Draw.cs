@@ -58,7 +58,7 @@ namespace gladiatorspel
             const int padding = 2;
             Console.SetCursorPosition(padding, line);
             Console.Write(text.PadRight(WIDTH - padding));
-            Console.SetCursorPosition(WIDTH - 1, line);
+            Console.SetCursorPosition(WIDTH, line);
             Console.Write("║");
             Console.SetCursorPosition(WIDTH, HEIGHT);
         }
@@ -76,6 +76,11 @@ namespace gladiatorspel
                 ShowText(text + input, line);
             }
             return input;
+        }
+
+        public static void ShowPlayerStats(Gladiator gladiator)
+        {
+            ShowText(gladiator.name + " [HP: " + gladiator.health + " Attack: " + gladiator.strength + "]", HEIGHT - 2);
         }
     }
 }

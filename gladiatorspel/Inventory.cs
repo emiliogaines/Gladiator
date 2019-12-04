@@ -5,7 +5,7 @@ using System.Text;
 
 namespace gladiatorspel
 {
-    class Inventory
+    public class Inventory
     {
         public ArrayList inventoryList = new ArrayList();
 

@@ -19,7 +19,16 @@ namespace gladiatorspel
             while (true) 
             {
 
+<<<<<<< HEAD
             }
+=======
+
+
+            Draw.ShowPlayerStats(Player);
+            Player.checkInventory();
+
+            while (true) { }
+>>>>>>> 4a314679024dfc189b5367f9eb6446794f083883
 
         }
     }
