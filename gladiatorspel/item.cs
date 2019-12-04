@@ -7,15 +7,15 @@ namespace gladiatorspel
 {
     public class Item
     {
-        public int Health { get; }
-        public int Strength { get; }
+        public int BonusHealth { get; }
+        public int BonusStrength { get; }
 
 
 
         public Item(int health, int strength)
         {
-            Health = health;
-            Strength = strength;
+            BonusHealth = health;
+            BonusStrength = strength;
         }
        
     }
