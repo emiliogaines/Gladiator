@@ -7,9 +7,10 @@ namespace gladiatorspel
     class Gladiator
     {
         Random random = new Random();
-        public string name; 
-        public int baseHealth, health; 
-        public int baseStrength, strength; 
+        public string name;
+        public int baseHealth, health;
+        public int baseStrength, strength;
+        public Inventory inventory = new Inventory();
 
         public Gladiator(string Name)
         {
@@ -36,8 +37,7 @@ namespace gladiatorspel
         }
         public void checkInventory()
         {
-            //Console.WriteLine(Item.inventoryList); ///print array of items TODO:  FIX!!!
-
+            foreach (int i in inventory.inventoryList) Console.WriteLine(inventory.inventoryList[i]);
         }
 
     }
