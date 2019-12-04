@@ -32,8 +32,8 @@ namespace gladiatorspel
         }
         public void equipItem(Item item)
         {
-            health = baseHealth + item.Health;
-            strength = baseStrength + item.Strength;
+            health = baseHealth + item.BonusHealth;
+            strength = baseStrength + item.BonusStrength;
         }
         public void checkInventory()
         {
