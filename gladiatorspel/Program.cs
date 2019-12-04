@@ -16,7 +16,7 @@ namespace gladiatorspel
             Draw.ShowText("That is a shit name. Please step into the arena " + name, 3);
             Gladiator Player = new Gladiator(name);
             Draw.ShowPlayerStats(Player);
-            Player.checkInventory();
+            Player.CheckInventory();
             level1.Attack(Player);
             while (true) 
             {

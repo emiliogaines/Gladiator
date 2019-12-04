@@ -9,7 +9,7 @@ namespace gladiatorspel
     {
         public ArrayList inventoryList = new ArrayList();
 
-        public void addToInventory(item item)
+        public void addToInventory(Item item)
         {
             inventoryList.Add(item);
         }

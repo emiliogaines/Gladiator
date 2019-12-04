@@ -88,7 +88,7 @@ namespace gladiatorspel
             return input;
         }
 
-        public static void ShowPlayerStats(gladiator gladiator)
+        public static void ShowPlayerStats(Gladiator gladiator)
         {
             ShowText(gladiator.name + " [HP: " + gladiator.health + " Attack: " + gladiator.strength + "]", HEIGHT - 2);
         }
@@ -105,7 +105,7 @@ namespace gladiatorspel
             }
             for(int i = 0; i < inventory.inventoryList.Count; i++)
             {
-                Draw.ShowText()
+               // Draw.ShowText()
             }
         }
     }
