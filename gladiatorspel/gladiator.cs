@@ -6,18 +6,12 @@ namespace gladiatorspel
 {
     public class Gladiator
     {
-<<<<<<< HEAD
-        readonly Random random = new Random();
-        public string name; 
-        public int baseHealth, health; 
-        public int baseStrength, strength; 
-=======
+
         Random random = new Random();
         public string name;
         public int baseHealth, health;
         public int baseStrength, strength;
         public Inventory inventory = new Inventory();
->>>>>>> 4a314679024dfc189b5367f9eb6446794f083883
 
         public Gladiator(string Name)
         {

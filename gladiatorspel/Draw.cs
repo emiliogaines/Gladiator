@@ -78,7 +78,7 @@ namespace gladiatorspel
             return input;
         }
 
-        public static void ShowPlayerStats(Gladiator gladiator)
+        public static void ShowPlayerStats(gladiator gladiator)
         {
             ShowText(gladiator.name + " [HP: " + gladiator.health + " Attack: " + gladiator.strength + "]", HEIGHT - 2);
         }
