@@ -96,18 +96,63 @@ namespace gladiatorspel
         public static void ShowPlayerInventory(Gladiator player)
         {
             int MaxWidth = 0;
-            int Length = player.inventory.inventoryList.Count;
+            int Length = 10;
             foreach (Item item in player.inventory.inventoryList)
             {
                 if (item.Name.Length > MaxWidth) {
                     MaxWidth = item.Name.Length;
                 }
+            }
+            int MaxWidthFixed = MaxWidth + 8;
+            String inventoryTitle = "[ INVENTORY ]";
+            Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 2 - Length);
+            Console.Write("╔" + inventoryTitle.PadBoth(MaxWidthFixed - 2, '═') + "╣");
+            for (int i = 0; i < 10; i++)
+            {
+                String itemName = "";
+                if (player.inventory.inventoryList.Count >= i + 1)
+                {
+                    itemName = (player.inventory.inventoryList[i] as Item).Name;
+                }
+                String drawString = "║ " + string.Format("{0:D2}", i + 1) + ") " + itemName.PadLeft(MaxWidth);
+                Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 1 - Length + i);
+                Console.Write(drawString);
+                //Draw.ShowText(drawString, HEIGHT - 1 - Length + i, 10);
                 
             }
-            for(int i = 0; i < player.inventory.inventoryList.Count; i++)
+            
+            Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT);
+            Console.Write("╩");
+            Console.SetCursorPosition(WIDTH, HEIGHT);
+        }
+
+        public static void HidePlayerInventory(Gladiator player)
+        {
+            int MaxWidth = 0;
+            int Length = 11;
+            foreach (Item item in player.inventory.inventoryList)
             {
-                Draw.ShowText((player.inventory.inventoryList[i] as Item).Name, HEIGHT - 1 - Length + i, 10);
+                if (item.Name.Length > MaxWidth)
+                {
+                    MaxWidth = item.Name.Length;
+                }
             }
+            int MaxWidthFixed = MaxWidth + 8;
+            for (int i = 0; i < Length; i++)
+            {
+                Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 2 - i);
+                for(int n = WIDTH - MaxWidthFixed; n < WIDTH - 1; n++)
+                {
+                    Console.Write(" ");
+                }
+
+            }
+            Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT);
+            Console.Write("═");
+            Console.SetCursorPosition(WIDTH, HEIGHT - Length - 1);
+            Console.Write("║");
+            Console.SetCursorPosition(WIDTH, HEIGHT);
+
         }
     }
 }
