@@ -9,6 +9,9 @@ namespace gladiatorspel
         private static int HEIGHT;
         public static void InitWindow()
         {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear(); 
             WIDTH = Console.WindowWidth;
             HEIGHT = Console.WindowHeight;
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
@@ -110,13 +113,21 @@ namespace gladiatorspel
 
         public static void ShowPlayerStats(Gladiator gladiator)
         {
-           // prepCursor();
-            ShowText(gladiator.name + " [HP: " + gladiator.health + " Attack: " + gladiator.strength + "]", HEIGHT - 2);
+            prepCursor(2, HEIGHT - 2);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(gladiator.name + " [HP: " + gladiator.GetHealth() + " Attack: " + gladiator.GetStrength() + "]");
+            Console.ForegroundColor = ConsoleColor.White;
+            finishedCursor();
         }
 
-        public static void ShowEnemyStats(Gladiator gladiator)
+        public static void ShowEnemyStats(Enemy enemy)
         {
-            ShowText(gladiator.name + " [HP: " + gladiator.health + " Attack: " + gladiator.strength + "]", HEIGHT - 2);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            String enemyText = enemy.name + " [HP: " + enemy.health + " Attack: " + enemy.strength + "]";
+            prepCursor(WIDTH - 2 - enemyText.Length, HEIGHT - 2);
+            Console.Write(enemyText);
+            Console.ForegroundColor = ConsoleColor.White;
+            finishedCursor();
         }
 
         public static void ShowPlayerInventory(Gladiator player)
