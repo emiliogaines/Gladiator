@@ -7,17 +7,20 @@ namespace gladiatorspel
 {
     public class Gladiator
     {
-
-        Random random = new Random();
+        readonly Random random = new Random();
         public string name;
         public int baseHealth, health;
         public int baseStrength, strength;
         public Inventory inventory = new Inventory();
         public int credits;
+<<<<<<< HEAD
+        public int AttackDamage { get; set; }
+=======
         public ArrayList ActivePotions = new ArrayList();
         public Item EquippedHelmet;
         public Item EquippedChest;
         public Item EquippedWeapon;
+>>>>>>> d71df27cbf818fc13e328b932b592afcbf362d7c
 
         public Gladiator(string Name)
         {
@@ -33,12 +36,10 @@ namespace gladiatorspel
         public void Attack(Enemy enemy)
         {
             Console.WriteLine("You attack!");
-            int attackDamage = strength;
-            Console.WriteLine("You deal {0} damage.", attackDamage);
+            AttackDamage = strength;
+            Console.WriteLine("You deal {0} damage.", AttackDamage);
             Console.WriteLine("--------------------");
-            enemy.health -= attackDamage;
-
-
+            enemy.health -= AttackDamage;
         }
         public void EquipItem(Item item)
         {
