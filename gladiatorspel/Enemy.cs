@@ -11,7 +11,7 @@ namespace gladiatorspel
         public string name;
         public int baseHealth, health;
         public int baseStrength, strength;
-        private readonly string[] EnemyNames = { "Gurra", "Kalle", "MioMinMio", "Mao the Red", "SidVicious", "Jack the Shining", "Hannibal" };
+        private readonly string[] EnemyNames = { "GurraGrr", "TrumpIsTramp", "MioMinMio", "MaoMinMoa", "SidVicious", "JackTheKnife", "Hannibal" };
         
         
 
@@ -28,10 +28,11 @@ namespace gladiatorspel
 
         public void Attack(Gladiator player)
         {
-
+            Console.WriteLine("--------------------");
             Console.WriteLine("{0} attacks!", name);
             int attackDamage = strength;
             Console.WriteLine("{0} dealt {1} damage to you.",name, attackDamage);
+            Console.WriteLine("--------------------");
             player.health -= attackDamage;
 
         }
