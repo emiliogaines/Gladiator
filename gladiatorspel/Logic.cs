@@ -4,7 +4,7 @@ using System.Text;
 
 namespace gladiatorspel
 {
-    class Logic
+    public class Logic
     {
 
 

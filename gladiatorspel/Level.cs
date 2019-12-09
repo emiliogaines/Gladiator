@@ -4,21 +4,24 @@ using System.Text;
 
 namespace gladiatorspel
 {
-    class Level
+    public class Level
     {
-        public Level()
-        {
-            LevelValue = 1;
-            Round = 0;
-            Credits = 100;
-        }
-        public int LevelValue { get; set; }
-        public int Round { get; set; }
-        public int Credits { get; set; }
+     
+        public int LevelValue;
+        public int Round;
+
 
         //======METHOD LEVEL ROUND======//
-        public void LevelRound(Gladiator Player)
+        public int NextLevel(int round)
         {
+            if (round == 3)
+            {
+                LevelValue++;
+                Round = 0;
+            }
+            return LevelValue;
+        }
+        /*
             while (true)
             {
                 Enemy Enemy = new Enemy(LevelValue);
@@ -28,7 +31,7 @@ namespace gladiatorspel
                 Console.WriteLine("{0} has strenght: {1}", Enemy.name, Enemy.strength);
                 Console.WriteLine("{0} has health: {1}", Enemy.name, Enemy.health);
 
-                while (true)
+                while (Enemy.health > 0 && Player.health > 0)
                 {
                     Enemy.Attack(Player);
                     Player.Attack(Enemy);
@@ -55,13 +58,8 @@ namespace gladiatorspel
                 Player.health++;
                 Round++;
 
-                if (Round == 2)
-                {
-                    LevelValue++;
-                    Credits += 100;
-                    Round = 0;
-                }
-            }
-        }
+                
+            }*/
+        
     }
 }
