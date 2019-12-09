@@ -13,7 +13,6 @@ namespace gladiatorspel
 
             String name;
 
-            Level levelNr = new Level();
 
             Draw.InitWindow();
             Draw.ShowText("Greetings Gladiator!", 1);
@@ -34,11 +33,18 @@ namespace gladiatorspel
             Draw.ShowPlayerStats(Player);
             Draw.ShowEnemyStats(Opponent);
             Draw.ShowTextPressEnter("< Press Enter to step into the arena >", 5);
-            Draw.ShowText("You step into the arena.", 4);
-            Draw.ShowText(Opponent.name + " approaches you.", 5);
+            Draw.ShowText("You step into the arena.", 5);
+            Draw.ShowText(Opponent.name + " approaches you.", 6);
 
-            Draw.ShowTextPressEnter("< Press Enter to begin fight >", 7);
-            Draw.ShowText("", 7);
+            Draw.ShowTextPressEnter("< Press Enter to begin fight >", 8);
+            Draw.Clear();
+            Draw.InitWindow();
+
+            Level level = new Level();
+
+            Draw.ShowLevel(level.LevelValue);
+            Draw.ShowPlayerStats(Player);
+            Draw.ShowEnemyStats(Opponent);
 
             /*
               __  __    ___       _        ___   ____       ____   ____    ___   _   _    ____   _____
@@ -65,7 +71,7 @@ namespace gladiatorspel
                     }
                     showingInventory = !showingInventory;
                 }
-                else if (key.Key != ConsoleKey.Escape) break;
+                else if (key.Key == ConsoleKey.Enter) break;
             }
 
         }

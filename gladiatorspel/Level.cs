@@ -9,11 +9,9 @@ namespace gladiatorspel
         public Level()
         {
             LevelValue = 1;
-            Round = 0;
             Credits = 100;
         }
         public int LevelValue { get; set; }
-        public int Round { get; set; }
         public int Credits { get; set; }
 
         //======METHOD LEVEL ROUND======//
@@ -53,13 +51,11 @@ namespace gladiatorspel
                 }
 
                 Player.health++;
-                Round++;
 
-                if (Round == 2)
+                if (LevelValue % 3 == 0)
                 {
                     LevelValue++;
                     Credits += 100;
-                    Round = 0;
                 }
             }
         }
