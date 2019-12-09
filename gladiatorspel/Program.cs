@@ -40,6 +40,8 @@ namespace gladiatorspel
             Draw.ShowTextPressEnter("< Press Enter to begin fight >", 7);
             Draw.ShowText("", 7);
 
+            Opponent.DropItem();
+
             /*
               __  __    ___       _        ___   ____       ____   ____    ___   _   _    ____   _____
              |  \/  |  / _ \     / \      |_ _| / ___|     / ___| |  _ \  |_ _| | \ | |  / ___| | ____|
