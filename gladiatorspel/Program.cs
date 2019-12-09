@@ -20,10 +20,24 @@ namespace gladiatorspel
             name = Draw.ShowTextInput("What is your name?: ", 2);
             Draw.ShowText("That is a shit name. Please step into the arena " + name, 3);
             Gladiator Player = new Gladiator(name);
+            Enemy Opponent = new Enemy(1);
 
-            Player.inventory.inventoryList.Add(new Item("Hateful speach", 0, 100, ItemType.WEAPON));
-            Player.inventory.inventoryList.Add(new Item("Ugly people", 99, 100, ItemType.HELMET));
+            Random random = new Random();
+            for(int r = 0; r < 5; r++)
+            {
+                int randomNumber = random.Next(0, Logic.ListOfItems.Length);
+                Player.inventory.addToInventory(Logic.ListOfItems[randomNumber]);
+            }
+            
+
+
             Draw.ShowPlayerStats(Player);
+            Draw.ShowTextPressEnter("< Press Enter to step into the arena >", 5);
+            Draw.ShowText("You step into the arena.", 4);
+            Draw.ShowText(Opponent.name + " approaches you.", 5);
+
+            Draw.ShowTextPressEnter("< Press Enter to begin fight >", 7);
+            Draw.ShowText("", 7);
 
             /*
               __  __    ___       _        ___   ____       ____   ____    ___   _   _    ____   _____

@@ -53,6 +53,16 @@ namespace gladiatorspel
             Console.SetCursorPosition(WIDTH, HEIGHT);
         }
 
+        private static void prepCursor(int x, int y)
+        {
+            Console.SetCursorPosition(x, y);
+        }
+
+        private static void finishedCursor()
+        {
+            Console.SetCursorPosition(WIDTH, HEIGHT);
+        }
+
         public static void ShowText(String text, int line)
         {
             const int padding = 2;
@@ -87,8 +97,24 @@ namespace gladiatorspel
             }
             return input;
         }
+        
+        public static void ShowTextPressEnter(String text, int line)
+        {
+            ShowText(text, line);
+            while (true)
+            {
+                var key = Console.ReadKey(true);
+                if (key.Key == ConsoleKey.Enter) break;
+            }
+        }
 
         public static void ShowPlayerStats(Gladiator gladiator)
+        {
+           // prepCursor();
+            ShowText(gladiator.name + " [HP: " + gladiator.health + " Attack: " + gladiator.strength + "]", HEIGHT - 2);
+        }
+
+        public static void ShowEnemyStats(Gladiator gladiator)
         {
             ShowText(gladiator.name + " [HP: " + gladiator.health + " Attack: " + gladiator.strength + "]", HEIGHT - 2);
         }
