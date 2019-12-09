@@ -7,6 +7,7 @@ namespace gladiatorspel
     class Logic
     {
 
+
         public void Menu()
         {
             Console.WriteLine("\nMENU\n");
@@ -21,7 +22,4 @@ namespace gladiatorspel
             new Item("Chestpiece of Strength",5,15),
             new Item("Skullcrusher Helmet", 0, 40)};
     }
-
-
-
 }

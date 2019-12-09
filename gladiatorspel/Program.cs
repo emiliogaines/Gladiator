@@ -6,12 +6,14 @@ namespace gladiatorspel
     {
         static void Main(string[] args)
         {
-            //Ska enemy och gladiator attackera med samma styrka hela tiden på en och samma level? 
+            //Ska enemy och gladiator attackera med samma styrka hela tiden på en och samma level?
             //Ska enemy och gladiator ha samma random max min på baseStrenght?
             //Ska hälsa och stryka synas? JA
             Boolean showingInventory = false;
 
             String name;
+
+            Level levelNr = new Level();
 
             Draw.InitWindow();
             Draw.ShowText("Greetings Gladiator!", 1);
@@ -24,17 +26,17 @@ namespace gladiatorspel
             Draw.ShowPlayerStats(Player);
 
             /*
-              __  __    ___       _        ___   ____       ____   ____    ___   _   _    ____   _____ 
+              __  __    ___       _        ___   ____       ____   ____    ___   _   _    ____   _____
              |  \/  |  / _ \     / \      |_ _| / ___|     / ___| |  _ \  |_ _| | \ | |  / ___| | ____|
-             | |\/| | | | | |   / _ \      | |  \___ \    | |     | |_) |  | |  |  \| | | |  _  |  _|  
-             | |  | | | |_| |  / ___ \     | |   ___) |   | |___  |  _ <   | |  | |\  | | |_| | | |___ 
+             | |\/| | | | | |   / _ \      | |  \___ \    | |     | |_) |  | |  |  \| | | |  _  |  _|
+             | |  | | | |_| |  / ___ \     | |   ___) |   | |___  |  _ <   | |  | |\  | | |_| | | |___
              |_|  |_|  \___/  /_/   \_\   |___| |____/     \____| |_| \_\ |___| |_| \_|  \____| |_____|
 
              */
 
             while (true)
             {
-                
+
                 var key = Console.ReadKey(true);
                 if (key.Key == ConsoleKey.I)
                 {
@@ -49,7 +51,7 @@ namespace gladiatorspel
                 }
                 else if (key.Key != ConsoleKey.Escape) break;
             }
-            
+
         }
     }
 }
