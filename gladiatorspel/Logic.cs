@@ -16,7 +16,7 @@ namespace gladiatorspel
                 "\n3. Quit");
         }
 
-        public Item[] ListOfItems =
+        public static Item[] ListOfItems =
         {
             new Item("Helm Of Vitality", 15,5, ItemType.HELMET),
             new Item("Chestpiece of Strength",5,15, ItemType.CHEST),
