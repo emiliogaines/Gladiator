@@ -32,6 +32,7 @@ namespace gladiatorspel
 
 
             Draw.ShowPlayerStats(Player);
+            Draw.ShowEnemyStats(Opponent);
             Draw.ShowTextPressEnter("< Press Enter to step into the arena >", 5);
             Draw.ShowText("You step into the arena.", 4);
             Draw.ShowText(Opponent.name + " approaches you.", 5);
@@ -56,6 +57,7 @@ namespace gladiatorspel
                 {
                     if (showingInventory) {
                         Draw.HidePlayerInventory(Player);
+                        Draw.ShowEnemyStats(Opponent);
                     }
                     else
                     {
