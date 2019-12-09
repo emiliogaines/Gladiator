@@ -10,8 +10,8 @@ namespace gladiatorspel
 
         Random random = new Random();
         public string name;
-        private int baseHealth, health;
-        private int baseStrength, strength;
+        public int baseHealth, health;
+        public int baseStrength, strength;
         public Inventory inventory = new Inventory();
         public int credits;
         public ArrayList ActivePotions = new ArrayList();

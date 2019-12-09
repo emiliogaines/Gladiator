@@ -9,24 +9,33 @@ namespace gladiatorspel
     {
         public int BonusHealth { get; set; }
         public int BonusStrength { get; set; }
+        public ItemType Type { get; }
 
         public string Name { get; set; }
 
-        public Item(string name, int health, int strength)
+        public Item(string name, int health, int strength, ItemType itemType)
         {
             Name = name;
             BonusHealth = health;
             BonusStrength = strength;
+            Type = itemType; 
         }
 
 
     }
     public class Potions : Item
     {
-        public Potions(string n, int temporaryHealthBoost, int temporaryStrengthBoost) : base(n, temporaryHealthBoost, temporaryStrengthBoost)
+        public Potions(string n, int temporaryHealthBoost, int temporaryStrengthBoost, ItemType t) : base(n, temporaryHealthBoost, temporaryStrengthBoost, t)
         {
             
         }
     }
+    
 
+}
+public enum ItemType
+{
+    HELMET , 
+    CHEST ,
+    WEAPON
 }
