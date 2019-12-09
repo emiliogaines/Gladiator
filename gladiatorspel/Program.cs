@@ -25,8 +25,8 @@ namespace gladiatorspel
             Random random = new Random();
             for(int r = 0; r < 5; r++)
             {
-                int randomNumber = random.Next(0, Logic.ListOfItems.Length);
-                Player.inventory.addToInventory(Logic.ListOfItems[randomNumber]);
+                int randomNumber = random.Next(0, Item.ListOfItems.Length);
+                Player.inventory.addToInventory(Item.ListOfItems[randomNumber]);
             }
 
 
