@@ -25,7 +25,8 @@ namespace gladiatorspel
     }
     public class Potions : Item
     {
-        public Potions(string n, int temporaryHealthBoost, int temporaryStrengthBoost, ItemType t) : base(n, temporaryHealthBoost, temporaryStrengthBoost, t)
+        public Potions(string n, int temporaryHealthBoost, int temporaryStrengthBoost, ItemType t) :
+            base(n, temporaryHealthBoost, temporaryStrengthBoost, t)
         {
             
         }
@@ -37,5 +38,6 @@ public enum ItemType
 {
     HELMET , 
     CHEST ,
-    WEAPON
+    WEAPON,
+    POTION
 }
