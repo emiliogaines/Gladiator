@@ -46,6 +46,8 @@ namespace gladiatorspel
             Draw.ShowPlayerStats(Player);
             Draw.ShowEnemyStats(Opponent);
 
+            Opponent.DropItem();
+
             /*
               __  __    ___       _        ___   ____       ____   ____    ___   _   _    ____   _____
              |  \/  |  / _ \     / \      |_ _| / ___|     / ___| |  _ \  |_ _| | \ | |  / ___| | ____|
