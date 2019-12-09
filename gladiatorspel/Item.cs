@@ -7,7 +7,6 @@ namespace gladiatorspel
 {
     public class Item
     {
-        public string[] ListOfItems = { "Helm of Vitality", "Chestpiece of Strength", "Skullcrusher Helmet" };
         public int BonusHealth { get; }
         public int BonusStrength { get; }
 
@@ -19,6 +18,11 @@ namespace gladiatorspel
             BonusHealth = health;
             BonusStrength = strength;
         }
-       
+
+
     }
+    //public class Potions : Item
+    //{
+
+    //}
 }

@@ -18,6 +18,7 @@ namespace gladiatorspel
             name = Draw.ShowTextInput("What is your name?: ", 2);
             Draw.ShowText("That is a shit name. Please step into the arena " + name, 3);
             Gladiator Player = new Gladiator(name);
+<<<<<<< HEAD
             //Draw.ShowPlayerStats(Player);
             //Player.CheckInventory();
 
@@ -27,6 +28,15 @@ namespace gladiatorspel
             bool play = true;
 
             while (play) 
+=======
+            Player.inventory.inventoryList.Add(new Item("Hateful speach", 0, 100));
+            Player.inventory.inventoryList.Add(new Item("Ugly people", 99, 100));
+            Draw.ShowPlayerStats(Player);
+            Draw.ShowPlayerInventory(Player);
+            //Player.CheckInventory();
+            //level1.Attack(Player);
+            while (true) 
+>>>>>>> c3b6a3b7a005563bce6574c3b114faff14189480
             {
                 Enemy enemy = new Enemy(level);
 
