@@ -28,7 +28,7 @@ namespace gladiatorspel
                 int randomNumber = random.Next(0, Logic.ListOfItems.Length);
                 Player.inventory.addToInventory(Logic.ListOfItems[randomNumber]);
             }
-            
+
 
 
             Draw.ShowPlayerStats(Player);

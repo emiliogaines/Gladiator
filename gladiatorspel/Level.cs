@@ -22,33 +22,37 @@ namespace gladiatorspel
             while (true)
             {
                 Enemy Enemy = new Enemy(LevelValue);
-               
-                //Visa stats
+                Console.WriteLine("Your strenght: {0}", Player.strength);
+                Console.WriteLine("Your health: {0}", Player.health);
+                Console.WriteLine();
+                Console.WriteLine("{0} has strenght: {1}", Enemy.name, Enemy.strength);
+                Console.WriteLine("{0} has health: {1}", Enemy.name, Enemy.health);
 
                 while (true)
                 {
                     Enemy.Attack(Player);
                     Player.Attack(Enemy);
 
-                    if (Enemy.baseHealth <= 0)
+                    if (Enemy.health <= 0)
                     {
-                        //Gladiator vinner
-                        //Console.WriteLine("You win!");
+                        Console.WriteLine("--------------------");
+                        Console.WriteLine("You win!");
                         Player.credits += Credits;
                         break;
                     }
-                    else if (Player.baseHealth <= 0)
+                    else if (Player.health <= 0)
                     {
-                        //Enemy vinner
-                        //Console.WriteLine("Sry bae. Enemy killed you.");
+                        Console.WriteLine("--------------------");
+                        Console.WriteLine("Sry bae. Enemy killed you.");
                         break;
                     }
 
-                    //Visa stats
-                    
+                    Console.WriteLine("Your health: {0}", Player.health);
+                    Console.WriteLine();
+                    Console.WriteLine("{0} has health: {1}", Enemy.name, Enemy.health);
                 }
 
-                Player.baseHealth++;
+                Player.health++;
                 Round++;
 
                 if (Round == 2)
