@@ -25,7 +25,7 @@ namespace gladiatorspel
         {
             name = Name;
             baseHealth = 100;
-            baseStrength = random.Next(1, 5);
+            baseStrength = random.Next(5, 11);
             credits = 0;
             health = baseHealth;
             strength = baseStrength;
