@@ -18,8 +18,8 @@ namespace gladiatorspel
 
         public Item[] ListOfItems =
         {
-            new Item("Helm Of Vitality", 15,5),
-            new Item("Chestpiece of Strength",5,15),
-            new Item("Skullcrusher Helmet", 0, 40)};
+            new Item("Helm Of Vitality", 15,5, ItemType.HELMET),
+            new Item("Chestpiece of Strength",5,15, ItemType.CHEST),
+            new Item("Skullcrusher Helmet", 0, 40, ItemType.HELMET)};
     }
 }

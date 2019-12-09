@@ -13,14 +13,13 @@ namespace gladiatorspel
         public int baseStrength, strength;
         public Inventory inventory = new Inventory();
         public int credits;
-<<<<<<< HEAD
+
         public int AttackDamage { get; set; }
-=======
+
         public ArrayList ActivePotions = new ArrayList();
         public Item EquippedHelmet;
         public Item EquippedChest;
         public Item EquippedWeapon;
->>>>>>> d71df27cbf818fc13e328b932b592afcbf362d7c
 
         public Gladiator(string Name)
         {
