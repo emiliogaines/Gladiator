@@ -7,10 +7,10 @@ namespace gladiatorspel
 {
     public class Item
     {
-        public int BonusHealth { get; }
-        public int BonusStrength { get; }
+        public int BonusHealth { get; set; }
+        public int BonusStrength { get; set; }
 
-        public string Name { get; }
+        public string Name { get; set; }
 
         public Item(string name, int health, int strength)
         {
@@ -21,8 +21,12 @@ namespace gladiatorspel
 
 
     }
-    //public class Potions : Item
-    //{
+    public class Potions : Item
+    {
+        public Potions(string n, int temporaryHealthBoost, int temporaryStrengthBoost) : base(n, temporaryHealthBoost, temporaryStrengthBoost)
+        {
+            
+        }
+    }
 
-    //}
 }
