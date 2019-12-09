@@ -37,5 +37,11 @@ namespace gladiatorspel
             player.health -= AttackDamage;
 
         }
+        public void DropItem()
+        {
+            Item droppedItem = (Item.ListOfItems[random.Next(Item.ListOfItems.Length)]);
+            
+
+        }
     }
 }

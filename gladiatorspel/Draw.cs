@@ -154,7 +154,6 @@ namespace gladiatorspel
                 String drawString = "║ " + string.Format("{0:D2}", i + 1) + ") " + itemName.PadLeft(MaxWidth);
                 Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 1 - Length + i);
                 Console.Write(drawString);
-                //Draw.ShowText(drawString, HEIGHT - 1 - Length + i, 10);
                 
             }
             
@@ -190,6 +189,22 @@ namespace gladiatorspel
             Console.Write("║");
             Console.SetCursorPosition(WIDTH, HEIGHT);
 
+        }
+
+        public static void ShowLevel(int level)
+        {
+            String levelText = "[ LEVEL " + level + " ]";
+            Draw.ShowText(levelText.PadBoth(WIDTH - 2, ' '), 1);
+        }
+
+        public static void Clear()
+        {
+            for(int i = 0; i < HEIGHT; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.WriteLine(" ".PadRight(WIDTH));
+            }
+            Console.SetCursorPosition(WIDTH, HEIGHT);
         }
     }
 }

@@ -6,11 +6,19 @@ namespace gladiatorspel
 {
     public class Credit
     {
-        public int credits;
+        public int Credits { get; set; }
 
-        public void 
+        public Credit()
+        {
+            Credits = 100;
+        } 
+
+        public void BattleCredit(int gladiatorHealth, int enemyHealth)
+        {
+            if (gladiatorHealth > enemyHealth)
+            {
+
+            }
+        }
     }
-
-
-
 }

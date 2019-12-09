@@ -15,5 +15,6 @@ namespace gladiatorspel
                 "\n2. Check inventory" +
                 "\n3. Quit");
         }
+
     }
 }
