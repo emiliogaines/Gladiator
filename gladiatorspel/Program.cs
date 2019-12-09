@@ -21,6 +21,8 @@ namespace gladiatorspel
             Draw.ShowText("That is a shit name. Please step into the arena " + name, 3);
             Gladiator Player = new Gladiator(name);
 
+            levelNr.LevelRound(Player);
+
             Player.inventory.inventoryList.Add(new Item("Hateful speach", 0, 100, ItemType.WEAPON));
             Player.inventory.inventoryList.Add(new Item("Ugly people", 99, 100, ItemType.HELMET));
             Draw.ShowPlayerStats(Player);
