@@ -33,6 +33,10 @@ namespace gladiatorspel
             Type = itemType; 
         }
 
+        public override String ToString()
+        {
+            return Name + " [" + BonusHealth + "," + BonusStrength + "]";
+        }
 
     }
     public class Potions : Item
@@ -43,6 +47,9 @@ namespace gladiatorspel
             
         }
     }
+
+    
+
     
 
 }

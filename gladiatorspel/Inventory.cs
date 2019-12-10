@@ -7,11 +7,23 @@ namespace gladiatorspel
 {
     public class Inventory
     {
-        public ArrayList inventoryList = new ArrayList();
+        public List<Item> inventoryList = new List<Item>();
 
         public void addToInventory(Item item)
         {
             inventoryList.Add(item);
+        }
+
+        public Item getFromInventory(int position)
+        {
+            if(inventoryList.Count > position)
+            {
+                return inventoryList[position];
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

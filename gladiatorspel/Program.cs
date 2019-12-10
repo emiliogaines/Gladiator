@@ -4,12 +4,16 @@ namespace gladiatorspel
 {
     class Program
     {
+
+        private static Boolean showingInventory = false;
+        private static Boolean fighting = true;
         static void Main(string[] args)
         {
             //Ska enemy och gladiator attackera med samma styrka hela tiden på en och samma level?
             //Ska enemy och gladiator ha samma random max min på baseStrenght?
             //Ska hälsa och stryka synas? JA
-            Boolean showingInventory = false;
+           
+         
 
             String name;
 
@@ -30,23 +34,35 @@ namespace gladiatorspel
 
 
 
-            Draw.ShowPlayerStats(Player);
-            Draw.ShowEnemyStats(Opponent);
+            Draw.ShowPlayerStats(Player); 
             Draw.ShowTextPressEnter("< Press Enter to step into the arena >", 5);
             Draw.ShowText("You step into the arena.", 5);
             Draw.ShowText(Opponent.name + " approaches you.", 6);
+
+            Draw.ShowEnemyStats(Opponent, false);
 
             Draw.ShowTextPressEnter("< Press Enter to begin fight >", 8);
             Draw.Clear();
             Draw.InitWindow();
 
             Level level = new Level();
+            Draw.ShowRound(level.LevelValue);
 
-            Draw.ShowLevel(level.LevelValue);
-            Draw.ShowPlayerStats(Player);
-            Draw.ShowEnemyStats(Opponent);
+            while (fighting)
+            {
+                Draw.ShowPlayerStats(Player);
+                Draw.ShowEnemyStats(Opponent, false);
+                Draw.FightOptions();
+                handleInput(Player, Opponent);
+                Draw.ClearFightOptions();
+                Draw.ShowEnemyStats(Opponent, true);
+            }
 
-            Opponent.DropItem();
+
+            
+          
+
+            
 
             /*
               __  __    ___       _        ___   ____       ____   ____    ___   _   _    ____   _____
@@ -57,15 +73,21 @@ namespace gladiatorspel
 
              */
 
+        }
+
+        private static void handleInput(Gladiator Player, Enemy Opponent)
+        {
             while (true)
             {
 
                 var key = Console.ReadKey(true);
                 if (key.Key == ConsoleKey.I)
                 {
-                    if (showingInventory) {
+                    if (showingInventory)
+                    {
                         Draw.HidePlayerInventory(Player);
-                        Draw.ShowEnemyStats(Opponent);
+                        Draw.ShowEnemyStats(Opponent, false);
+                        Draw.FightOptions();
                     }
                     else
                     {
@@ -73,9 +95,39 @@ namespace gladiatorspel
                     }
                     showingInventory = !showingInventory;
                 }
+                else if (showingInventory && (key.Key == ConsoleKey.D1 || key.Key == ConsoleKey.D2 || key.Key == ConsoleKey.D3 || key.Key == ConsoleKey.D4 || key.Key == ConsoleKey.D5 || key.Key == ConsoleKey.D6 || key.Key == ConsoleKey.D7 || key.Key == ConsoleKey.D8))
+                {
+                    switch (key.Key)
+                    {
+                        case ConsoleKey.D1:
+                            Player.EquipItem(Player.inventory.getFromInventory(0));
+                            break;
+                        case ConsoleKey.D2:
+                            Player.EquipItem(Player.inventory.getFromInventory(1));
+                            break;
+                        case ConsoleKey.D3:
+                            Player.EquipItem(Player.inventory.getFromInventory(2));
+                            break;
+                        case ConsoleKey.D4:
+                            Player.EquipItem(Player.inventory.getFromInventory(3));
+                            break;
+                        case ConsoleKey.D5:
+                            Player.EquipItem(Player.inventory.getFromInventory(4));
+                            break;
+                        case ConsoleKey.D6:
+                            Player.EquipItem(Player.inventory.getFromInventory(5));
+                            break;
+                        case ConsoleKey.D7:
+                            Player.EquipItem(Player.inventory.getFromInventory(6));
+                            break;
+                        case ConsoleKey.D8:
+                            Player.EquipItem(Player.inventory.getFromInventory(7));
+                            break;
+                    }
+                    Draw.ShowPlayerInventory(Player);
+                }
                 else if (key.Key == ConsoleKey.Enter) break;
             }
-
         }
     }
 }
