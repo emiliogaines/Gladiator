@@ -37,7 +37,7 @@ namespace gladiatorspel
                 //YOU KILLED [ENEMY]
                 //Add to list / rapport över besegrade motståndare
 
-                credit.BattleCredit(Player, Program.level);
+                credit.BattleCredit(Player, Program.Round);
                 DefeatedOpponents.Add(Opponent.name);
             }
             if (Player.health <= 0)

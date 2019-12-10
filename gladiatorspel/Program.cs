@@ -7,7 +7,7 @@ namespace gladiatorspel
 
         private static Boolean showingInventory;
         private static Boolean fighting = true;
-        private static int Round = 1;
+        public static int Round = 1;
         static void Main(string[] args)
         {
             //Ska enemy och gladiator attackera med samma styrka hela tiden på en och samma level?
