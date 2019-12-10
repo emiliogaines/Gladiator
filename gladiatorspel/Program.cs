@@ -4,23 +4,23 @@ namespace gladiatorspel
 {
     class Program
     {
+        public static int level = 1;
+
         static void Main(string[] args)
         {
             //Ska enemy och gladiator attackera med samma styrka hela tiden på en och samma level?
             //Ska enemy och gladiator ha samma random max min på baseStrenght?
             //Ska hälsa och stryka synas? JA
             Boolean showingInventory = false;
-            Level level = new Level();
 
             String name;
-
 
             Draw.InitWindow();
             Draw.ShowText("Greetings Gladiator!", 1);
             name = Draw.ShowTextInput("What is your name?: ", 2);
             Draw.ShowText("That is a shit name. Please step into the arena " + name, 3);
             Gladiator Player = new Gladiator(name);
-            Enemy Opponent = new Enemy(level.LevelValue);
+            Enemy Opponent = new Enemy(level);
 
             Random random = new Random();
             for(int r = 0; r < 5; r++)
@@ -42,7 +42,7 @@ namespace gladiatorspel
             Draw.InitWindow();
 
 
-            Draw.ShowLevel(level.LevelValue);
+           // Draw.ShowLevel(level.LevelValue);         MIO FIXA
             Draw.ShowPlayerStats(Player);
             Draw.ShowEnemyStats(Opponent);
 
