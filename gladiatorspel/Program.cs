@@ -56,6 +56,23 @@ namespace gladiatorspel
             Draw.ShowPlayerStats(Player);
             Draw.ShowEnemyStats(Opponent);
 =======
+            Level level = new Level();
+            Draw.ShowRound(level.LevelValue);
+
+            while (fighting)
+            {
+                Draw.ShowPlayerStats(Player);
+                Draw.ShowEnemyStats(Opponent, false);
+                Draw.FightOptions();
+                handleInput(Player, Opponent);
+                Draw.ClearFightOptions();
+                Draw.ShowEnemyStats(Opponent, true);
+            }
+
+
+
+
+
 >>>>>>> 55c429a3b3201b4f6028d36dbcd1e7333856c014
 
 
@@ -78,9 +95,11 @@ namespace gladiatorspel
                 var key = Console.ReadKey(true);
                 if (key.Key == ConsoleKey.I)
                 {
-                    if (showingInventory) {
+                    if (showingInventory)
+                    {
                         Draw.HidePlayerInventory(Player);
-                        Draw.ShowEnemyStats(Opponent);
+                        Draw.ShowEnemyStats(Opponent, false);
+                        Draw.FightOptions();
                     }
                     else
                     {
@@ -88,9 +107,39 @@ namespace gladiatorspel
                     }
                     showingInventory = !showingInventory;
                 }
+                else if (showingInventory && (key.Key == ConsoleKey.D1 || key.Key == ConsoleKey.D2 || key.Key == ConsoleKey.D3 || key.Key == ConsoleKey.D4 || key.Key == ConsoleKey.D5 || key.Key == ConsoleKey.D6 || key.Key == ConsoleKey.D7 || key.Key == ConsoleKey.D8))
+                {
+                    switch (key.Key)
+                    {
+                        case ConsoleKey.D1:
+                            Player.EquipItem(Player.inventory.getFromInventory(0));
+                            break;
+                        case ConsoleKey.D2:
+                            Player.EquipItem(Player.inventory.getFromInventory(1));
+                            break;
+                        case ConsoleKey.D3:
+                            Player.EquipItem(Player.inventory.getFromInventory(2));
+                            break;
+                        case ConsoleKey.D4:
+                            Player.EquipItem(Player.inventory.getFromInventory(3));
+                            break;
+                        case ConsoleKey.D5:
+                            Player.EquipItem(Player.inventory.getFromInventory(4));
+                            break;
+                        case ConsoleKey.D6:
+                            Player.EquipItem(Player.inventory.getFromInventory(5));
+                            break;
+                        case ConsoleKey.D7:
+                            Player.EquipItem(Player.inventory.getFromInventory(6));
+                            break;
+                        case ConsoleKey.D8:
+                            Player.EquipItem(Player.inventory.getFromInventory(7));
+                            break;
+                    }
+                    Draw.ShowPlayerInventory(Player);
+                }
                 else if (key.Key == ConsoleKey.Enter) break;
             }
-
         }
     }
 }
