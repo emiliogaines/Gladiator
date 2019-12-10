@@ -42,7 +42,7 @@ namespace gladiatorspel
             Draw.InitWindow();
 
 
-           // Draw.ShowLevel(level.LevelValue);         MIO FIXA
+           //Draw.ShowLevel(level.LevelValue);         MIO FIXA
             Draw.ShowPlayerStats(Player);
             Draw.ShowEnemyStats(Opponent);
 

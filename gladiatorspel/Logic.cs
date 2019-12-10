@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,6 +8,8 @@ namespace gladiatorspel
     public class Logic
     {
         readonly Credit credit = new Credit();
+        public ArrayList DefeatedOpponents = new ArrayList(); 
+
 
         public void DisplayMenu()
         {
@@ -18,7 +21,7 @@ namespace gladiatorspel
         }
 
 
-        public void Fight(Gladiator gladiator, Enemy enemy, Level level)
+        public void Fight(Gladiator gladiator, Enemy enemy)
         {
             while (gladiator.health > 0 && enemy.health > 0)
             {
@@ -30,7 +33,8 @@ namespace gladiatorspel
                 //YOU KILLED [ENEMY]
                 //Add to list / rapport över besegrade motståndare
 
-                credit.BattleCredit(gladiator, level.LevelValue);       //?
+                credit.BattleCredit(gladiator, Program.level);
+                DefeatedOpponents.Add(enemy.name);
             }
             if (gladiator.health <= 0)
             {

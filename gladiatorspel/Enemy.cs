@@ -12,7 +12,7 @@ namespace gladiatorspel
         public int baseHealth, health;
         public int baseStrength, strength;
         public int AttackDamage { get; set; }
-        private readonly string[] EnemyNames = { "GurraGrr", "ShirleyClamp", "MioMinMio", "MaoMinMao", "SidVicious", "JackTheKnife", "Hannibal" };
+        private readonly string[] EnemyNames = { "Gurra Grr", "Shirley Clamp", "Mio Min Mio", "Mao Min Mao", "Sid Vicious", "Jack The Knife", "Hannibal" };
         
         
 
