@@ -4,11 +4,20 @@ namespace gladiatorspel
 {
     class Program
     {
-        public static int level = 1;
 
+        private static Boolean showingInventory = false;
+        private static Boolean fighting = true;
         static void Main(string[] args)
         {
+<<<<<<< HEAD
             Boolean showingInventory = false;
+=======
+            //Ska enemy och gladiator attackera med samma styrka hela tiden på en och samma level?
+            //Ska enemy och gladiator ha samma random max min på baseStrenght?
+            //Ska hälsa och stryka synas? JA
+
+
+>>>>>>> 55c429a3b3201b4f6028d36dbcd1e7333856c014
 
             String name;
 
@@ -29,23 +38,26 @@ namespace gladiatorspel
 
 
             Draw.ShowPlayerStats(Player);
-            Draw.ShowEnemyStats(Opponent);
             Draw.ShowTextPressEnter("< Press Enter to step into the arena >", 5);
             Draw.ShowText("You step into the arena.", 5);
             Draw.ShowText(Opponent.name + " approaches you.", 6);
+
+            Draw.ShowEnemyStats(Opponent, false);
 
             Draw.ShowTextPressEnter("< Press Enter to begin fight >", 8);
             Draw.Clear();
             Draw.InitWindow();
 
+<<<<<<< HEAD
             
 
 
             //Draw.ShowLevel(level.LevelValue);         MIO FIXA
             Draw.ShowPlayerStats(Player);
             Draw.ShowEnemyStats(Opponent);
+=======
+>>>>>>> 55c429a3b3201b4f6028d36dbcd1e7333856c014
 
-            Opponent.DropItem();
 
             /*
               __  __    ___       _        ___   ____       ____   ____    ___   _   _    ____   _____
@@ -56,6 +68,10 @@ namespace gladiatorspel
 
              */
 
+        }
+
+        private static void handleInput(Gladiator Player, Enemy Opponent)
+        {
             while (true)
             {
 

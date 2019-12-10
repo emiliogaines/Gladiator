@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 namespace gladiatorspel
 {
@@ -7,6 +8,12 @@ namespace gladiatorspel
         const String Title = "[ GLADIATOR ]";
         private static int WIDTH;
         private static int HEIGHT;
+
+        private static List<string> playerActions = new List<string>();
+        private static List<string> enemyActions = new List<string>();
+
+
+
         public static void InitWindow()
         {
             Console.ForegroundColor = ConsoleColor.White;
@@ -120,36 +127,76 @@ namespace gladiatorspel
             finishedCursor();
         }
 
-        public static void ShowEnemyStats(Enemy enemy)
+        public static void ShowEnemyStats(Enemy enemy, Boolean loading)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             String enemyText = enemy.name + " [HP: " + enemy.health + " Attack: " + enemy.strength + "]";
             prepCursor(WIDTH - 2 - enemyText.Length, HEIGHT - 2);
             Console.Write(enemyText);
             Console.ForegroundColor = ConsoleColor.White;
+
+            if (loading)
+            {
+                Char[] indicators = { '/', '-', '\\', '|', '/', '-', '\\' };
+                foreach(Char indicator in indicators)
+                {
+                    prepCursor(WIDTH - 7 - enemyText.Length, HEIGHT - 2);
+                    Console.Write("[" + indicator + "] ");
+                    finishedCursor();
+                    System.Threading.Thread.Sleep(250);
+                }
+                prepCursor(WIDTH - 7 - enemyText.Length, HEIGHT - 2);
+                Console.Write("    ");
+            }
+
             finishedCursor();
         }
 
         public static void ShowPlayerInventory(Gladiator player)
         {
             int MaxWidth = 0;
-            int Length = 10;
-            foreach (Item item in player.inventory.inventoryList)
+            int MaxWidthEquip = 0;
+            int Length = 8;
+            String[] equippedPositions = { "HELMET", "BODY", "WEAPON" };
+            Item[] equippedItem = { player.EquippedHelmet, player.EquippedChest, player.EquippedWeapon};
+            foreach (Item item in Item.ListOfItems)
             {
-                if (item.Name.Length > MaxWidth) {
-                    MaxWidth = item.Name.Length;
+                foreach(String pos in equippedPositions)
+                {
+                    if (pos.Length > MaxWidthEquip) MaxWidthEquip = pos.Length;
+                }
+                if (item.Name.Length + MaxWidthEquip > MaxWidth) {
+                    MaxWidth = item.ToString().Length + MaxWidthEquip;
                 }
             }
             int MaxWidthFixed = MaxWidth + 8;
             String inventoryTitle = "[ INVENTORY ]";
+            String equippedTitle = "[ EQUIPPED  ]";
+            Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 6 - Length);
+            Console.Write("╔" + equippedTitle.PadBoth(MaxWidthFixed - 2, '═') + "╣");
+            for (int i = 0; i < 3; i++)
+            {
+                String itemName;
+                if(equippedItem[i] != null)
+                {
+                    itemName = equippedItem[i].ToString();
+                }
+                else
+                {
+                    itemName = "";
+                }
+                String drawString = "║ " + equippedPositions[i] + ": " + itemName.PadLeft(MaxWidth - equippedPositions[i].Length + 2);
+                Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 5 - Length + i);
+                Console.Write(drawString);
+            }
             Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 2 - Length);
-            Console.Write("╔" + inventoryTitle.PadBoth(MaxWidthFixed - 2, '═') + "╣");
-            for (int i = 0; i < 10; i++)
+            Console.Write("╠" + inventoryTitle.PadBoth(MaxWidthFixed - 2, '═') + "╣");
+            for (int i = 0; i < 8; i++)
             {
                 String itemName = "";
                 if (player.inventory.inventoryList.Count >= i + 1)
                 {
-                    itemName = (player.inventory.inventoryList[i] as Item).Name;
+                    itemName = (player.inventory.inventoryList[i] as Item).ToString();
                 }
                 String drawString = "║ " + string.Format("{0:D2}", i + 1) + ") " + itemName.PadLeft(MaxWidth);
                 Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 1 - Length + i);
@@ -164,13 +211,19 @@ namespace gladiatorspel
 
         public static void HidePlayerInventory(Gladiator player)
         {
+            int Length = 15;
             int MaxWidth = 0;
-            int Length = 11;
-            foreach (Item item in player.inventory.inventoryList)
+            int MaxWidthEquip = 0;
+            String[] equippedPositions = { "HELMET", "BODY", "WEAPON" };
+            foreach (Item item in Item.ListOfItems)
             {
-                if (item.Name.Length > MaxWidth)
+                foreach (String pos in equippedPositions)
                 {
-                    MaxWidth = item.Name.Length;
+                    if (pos.Length > MaxWidthEquip) MaxWidthEquip = pos.Length;
+                }
+                if (item.ToString().Length + MaxWidthEquip > MaxWidth)
+                {
+                    MaxWidth = item.ToString().Length + MaxWidthEquip;
                 }
             }
             int MaxWidthFixed = MaxWidth + 8;
@@ -183,17 +236,19 @@ namespace gladiatorspel
                 }
 
             }
-            Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT);
+            Console.SetCursorPosition(WIDTH - MaxWidthFixed + 6, HEIGHT);
             Console.Write("═");
-            Console.SetCursorPosition(WIDTH, HEIGHT - Length - 1);
+            Console.SetCursorPosition(WIDTH, HEIGHT - Length + 1);
+            Console.Write("║");
+            Console.SetCursorPosition(WIDTH, HEIGHT - Length + 5);
             Console.Write("║");
             Console.SetCursorPosition(WIDTH, HEIGHT);
 
         }
 
-        public static void ShowLevel(int level)
+        public static void ShowRound(int round)
         {
-            String levelText = "[ LEVEL " + level + " ]";
+            String levelText = "[ ROUND " + round + " ]";
             Draw.ShowText(levelText.PadBoth(WIDTH - 2, ' '), 1);
         }
 
@@ -205,6 +260,16 @@ namespace gladiatorspel
                 Console.WriteLine(" ".PadRight(WIDTH));
             }
             Console.SetCursorPosition(WIDTH, HEIGHT);
+        }
+
+        public static void FightOptions()
+        {
+            Draw.ShowText("< Press Enter to attack >".PadBoth(WIDTH - 2, ' '), 6);
+        }
+
+        public static void ClearFightOptions()
+        {
+            Draw.ShowText("".PadBoth(WIDTH - 2, ' '), 6);
         }
     }
 }

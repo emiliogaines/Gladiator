@@ -42,19 +42,25 @@ namespace gladiatorspel
         }
         public void EquipItem(Item item)
         {
+            if (item == null) return;
             switch (item.Type)
             {
                 case ItemType.HELMET:
+                    if (EquippedHelmet != null) inventory.addToInventory(EquippedHelmet);
                     EquippedHelmet = item;
                     break;
                 case ItemType.CHEST:
+                    if (EquippedChest != null) inventory.addToInventory(EquippedChest);
                     EquippedChest = item;
                     break;
                 case ItemType.WEAPON:
+                    if (EquippedWeapon != null) inventory.addToInventory(EquippedWeapon);
                     EquippedWeapon = item;
                     break;
-
+                default:
+                    return;
             }
+            inventory.inventoryList.Remove(item);
         }
         public void UsePotion(Potions potion)
         {
