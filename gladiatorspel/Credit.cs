@@ -6,19 +6,24 @@ namespace gladiatorspel
 {
     public class Credit
     {
+        Random random = new Random();
         public int Credits { get; set; }
-
+        public int Money;
         public Credit()
         {
             Credits = 100;
-        } 
-
-        public void BattleCredit(int gladiatorHealth, int enemyHealth)
-        {
-            if (gladiatorHealth > enemyHealth)
-            {
-
-            }
+            Money = random.Next(50, 151);
         }
+
+        public void BattleCredit(Gladiator gladiator, int level)
+        {
+            gladiator.credits += Credits * level;
+        }
+        public void DeadEnemyMoneyDrop(Gladiator gladiator)
+        {
+            gladiator.credits += Money;
+        }
+
+       
     }
 }

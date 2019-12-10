@@ -69,6 +69,10 @@ namespace gladiatorspel
             ActivePotions.Add(potion);
 
         }
+        public void RemoveActivePotion()
+        {
+            ActivePotions.Clear();
+        }
         public int GetHealth()
         {
             int bonusHealth = 0;

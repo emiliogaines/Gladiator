@@ -12,13 +12,14 @@ namespace gladiatorspel
         public int baseHealth, health;
         public int baseStrength, strength;
         public int AttackDamage { get; set; }
-        private readonly string[] EnemyNames = { "GurraGrr", "ShirleyClamp", "MioMinMio", "MaoMinMao", "SidVicious", "JackTheKnife", "Hannibal" };
+        private readonly string[] EnemyNames = { "Gurra Grr", "Shirley Clamp", "Mio Min Mio", "Mao Min Mao", "Sid Vicious", "Jack The Knife", "Hannibal" };
         
         
 
 
-        public Enemy(int level)
+        public Enemy(int round)
         {
+            int level = 1 + (round / 3);
             name = EnemyNames[random.Next(EnemyNames.Length)];
             baseHealth = random.Next(10,21);
             baseStrength = random.Next(1,4);

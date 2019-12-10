@@ -12,18 +12,17 @@ namespace gladiatorspel
             //Ska enemy och gladiator attackera med samma styrka hela tiden på en och samma level?
             //Ska enemy och gladiator ha samma random max min på baseStrenght?
             //Ska hälsa och stryka synas? JA
-           
-         
+
+
 
             String name;
-
 
             Draw.InitWindow();
             Draw.ShowText("Greetings Gladiator!", 1);
             name = Draw.ShowTextInput("What is your name?: ", 2);
             Draw.ShowText("That is a shit name. Please step into the arena " + name, 3);
             Gladiator Player = new Gladiator(name);
-            Enemy Opponent = new Enemy(1);
+            Enemy Opponent = new Enemy(level);
 
             Random random = new Random();
             for(int r = 0; r < 5; r++)
@@ -34,7 +33,7 @@ namespace gladiatorspel
 
 
 
-            Draw.ShowPlayerStats(Player); 
+            Draw.ShowPlayerStats(Player);
             Draw.ShowTextPressEnter("< Press Enter to step into the arena >", 5);
             Draw.ShowText("You step into the arena.", 5);
             Draw.ShowText(Opponent.name + " approaches you.", 6);
@@ -59,10 +58,10 @@ namespace gladiatorspel
             }
 
 
-            
-          
 
-            
+
+
+
 
             /*
               __  __    ___       _        ___   ____       ____   ____    ___   _   _    ____   _____
