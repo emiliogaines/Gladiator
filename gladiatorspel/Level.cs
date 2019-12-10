@@ -13,17 +13,12 @@ namespace gladiatorspel
         }
         public int LevelValue { get; set; }
        
-        public void NextLevel()
+        public void LevelUpEnemy()
         {
             if (LevelValue % 3 == 0)
             {
                 LevelValue++;
             }
-        }
-
-        public void BoostEnemy()
-        {
-
         }
     }
 }

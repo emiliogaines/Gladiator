@@ -17,19 +17,6 @@ namespace gladiatorspel
             //    "\n3. Quit");
         }
 
-        public void MenuChoice()
-        {
-            ConsoleKeyInfo keyInfo;
-            keyInfo = Console.ReadKey();
-
-            switch (keyInfo)
-            {
-                case 1:
-                    break;
-                default:
-                    break;
-            }
-        }
 
         public void Fight(Gladiator gladiator, Enemy enemy, Level level)
         {
@@ -38,14 +25,17 @@ namespace gladiatorspel
                 gladiator.Attack(enemy);
                 enemy.Attack(gladiator);
             }
-            if (gladiator.health > enemy.health)
+            if (enemy.health <= 0)
             {
-                //Gladiator victory
+                //YOU KILLED [ENEMY]
                 //Add to list / rapport över besegrade motståndare
 
                 credit.BattleCredit(gladiator, level.LevelValue);       //?
             }
-            //Enemy victory
+            if (gladiator.health <= 0)
+            {
+                // YOU DIED
+            }
         }
 
     }
