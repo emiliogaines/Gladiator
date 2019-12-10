@@ -44,7 +44,6 @@ namespace gladiatorspel
                 //Add to list / rapport över besegrade motståndare
 
                 credit.BattleCredit(gladiator, level.LevelValue);       //?
-                gladiator.credits = credit.Credits * level.LevelValue;  //Hur är bäst att skriva?
             }
             //Enemy victory
         }
