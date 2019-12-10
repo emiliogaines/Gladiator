@@ -17,8 +17,9 @@ namespace gladiatorspel
         
 
 
-        public Enemy(int level)
+        public Enemy(int round)
         {
+            int level = 1 + (round / 3);
             name = EnemyNames[random.Next(EnemyNames.Length)];
             baseHealth = random.Next(10,21);
             baseStrength = random.Next(1,4);
