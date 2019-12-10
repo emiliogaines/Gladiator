@@ -10,20 +10,20 @@ namespace gladiatorspel
         public Level()
         {
             LevelValue = 1;
-            Credits = 100;
         }
         public int LevelValue { get; set; }
-        public int Credits { get; set; }
-
-
-        //======METHOD LEVEL ROUND======//
+       
         public void NextLevel()
         {
             if (LevelValue % 3 == 0)
             {
                 LevelValue++;
-                Credits += 100;
             }
+        }
+
+        public void BoostEnemy()
+        {
+
         }
     }
 }

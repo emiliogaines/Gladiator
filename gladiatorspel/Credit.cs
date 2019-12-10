@@ -11,14 +11,13 @@ namespace gladiatorspel
         public Credit()
         {
             Credits = 100;
+        }
+
+        public void BattleCredit(Gladiator gladiator, int level)
+        {
+            gladiator.credits += Credits * level;
         } 
 
-        public void BattleCredit(int gladiatorHealth, int enemyHealth)
-        {
-            if (gladiatorHealth > enemyHealth)
-            {
-
-            }
-        }
+       
     }
 }
