@@ -57,18 +57,12 @@ namespace gladiatorspel
                     Draw.ClearFightOptions();
                     Draw.ShowEnemyStats(Opponent, true);
 
-                
+
                  }
-                
+
                 Round++;
                 Opponent = new Enemy(Round);
             }
-
-            
-
-
-
-
 
 
 

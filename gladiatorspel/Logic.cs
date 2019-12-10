@@ -21,22 +21,26 @@ namespace gladiatorspel
         }
 
 
-        public void Fight(Gladiator gladiator, Enemy enemy)
+        public void Fight(Gladiator Player, Enemy Opponent)
         {
-            while (gladiator.health > 0 && enemy.health > 0)
+            // press anything to attack
+
+            while (Opponent.health > 0 && Player.health > 0)
             {
-                gladiator.Attack(enemy);
-                enemy.Attack(gladiator);
+                //you attack
+                Player.Attack(Opponent);
+                //enemy attacks
+                Opponent.Attack(Player);
             }
-            if (enemy.health <= 0)
+            if (Opponent.health <= 0)
             {
                 //YOU KILLED [ENEMY]
                 //Add to list / rapport över besegrade motståndare
 
-                credit.BattleCredit(gladiator, Program.level);
-                DefeatedOpponents.Add(enemy.name);
+                credit.BattleCredit(Player, Program.level);
+                DefeatedOpponents.Add(Opponent.name);
             }
-            if (gladiator.health <= 0)
+            if (Player.health <= 0)
             {
                 // YOU DIED
             }
