@@ -8,9 +8,6 @@ namespace gladiatorspel
 
         static void Main(string[] args)
         {
-            //Ska enemy och gladiator attackera med samma styrka hela tiden på en och samma level?
-            //Ska enemy och gladiator ha samma random max min på baseStrenght?
-            //Ska hälsa och stryka synas? JA
             Boolean showingInventory = false;
 
             String name;
@@ -41,8 +38,10 @@ namespace gladiatorspel
             Draw.Clear();
             Draw.InitWindow();
 
+            
 
-           //Draw.ShowLevel(level.LevelValue);         MIO FIXA
+
+            //Draw.ShowLevel(level.LevelValue);         MIO FIXA
             Draw.ShowPlayerStats(Player);
             Draw.ShowEnemyStats(Opponent);
 
