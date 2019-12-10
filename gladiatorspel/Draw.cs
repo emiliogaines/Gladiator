@@ -9,8 +9,8 @@ namespace gladiatorspel
         private static int WIDTH;
         private static int HEIGHT;
 
-        private static List<string> playerActions = new List<string>();
-        private static List<string> enemyActions = new List<string>();
+        private static List<int> playerActions = new List<int> ();
+        private static List<int> enemyActions = new List<int>();
 
 
 
@@ -270,6 +270,18 @@ namespace gladiatorspel
         public static void ClearFightOptions()
         {
             Draw.ShowText("".PadBoth(WIDTH - 2, ' '), 6);
+        }
+
+        public static void EnemyAttacked(int dmg)
+        {
+            playerActions.Add(-dmg);
+            enemyActions.Add(dmg);
+        }
+
+        public static void GladiatorAttacked(int dmg)
+        {
+            playerActions.Add(dmg);
+            enemyActions.Add(-dmg);
         }
     }
 }

@@ -5,8 +5,9 @@ namespace gladiatorspel
     class Program
     {
 
-        private static Boolean showingInventory = false;
+        private static Boolean showingInventory;
         private static Boolean fighting = true;
+        private static int Round = 1;
         static void Main(string[] args)
         {
             //Ska enemy och gladiator attackera med samma styrka hela tiden på en och samma level?
@@ -22,7 +23,7 @@ namespace gladiatorspel
             name = Draw.ShowTextInput("What is your name?: ", 2);
             Draw.ShowText("That is a shit name. Please step into the arena " + name, 3);
             Gladiator Player = new Gladiator(name);
-            Enemy Opponent = new Enemy(level);
+            Enemy Opponent = new Enemy(Round);
 
             Random random = new Random();
             for(int r = 0; r < 5; r++)
@@ -44,18 +45,26 @@ namespace gladiatorspel
             Draw.Clear();
             Draw.InitWindow();
 
-            Level level = new Level();
-            Draw.ShowRound(level.LevelValue);
+            Draw.ShowRound(Round);
 
-            while (fighting)
+            while(Player.GetHealth() > 0)
             {
-                Draw.ShowPlayerStats(Player);
-                Draw.ShowEnemyStats(Opponent, false);
-                Draw.FightOptions();
-                handleInput(Player, Opponent);
-                Draw.ClearFightOptions();
-                Draw.ShowEnemyStats(Opponent, true);
+                while (Opponent.health > 0){
+                    Draw.ShowPlayerStats(Player);
+                    Draw.ShowEnemyStats(Opponent, false);
+                    Draw.FightOptions();
+                    handleInput(Player, Opponent);
+                    Draw.ClearFightOptions();
+                    Draw.ShowEnemyStats(Opponent, true);
+
+                
+                 }
+                
+                Round++;
+                Opponent = new Enemy(Round);
             }
+
+            
 
 
 
