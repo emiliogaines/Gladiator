@@ -176,7 +176,7 @@ namespace gladiatorspel
             finishedCursor();
         }
 
-        public static void ShowPlayerInventory(Gladiator player)
+        public static void ShowPlayerInventory(Gladiator player, Boolean deleteMode)
         {
             int MaxWidth = 0;
             int MaxWidthEquip = 0;
@@ -194,7 +194,15 @@ namespace gladiatorspel
                 }
             }
             int MaxWidthFixed = MaxWidth + 8;
-            String inventoryTitle = "[ INVENTORY ]";
+            String inventoryTitle;
+            if (deleteMode)
+            {
+                inventoryTitle = "[ DELETE MODE ]";
+            }
+            else
+            {
+                inventoryTitle = "[ INVENTORY ]";
+            }
             String equippedTitle = "[ EQUIPPED  ]";
             Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 6 - Length);
             Console.Write("╔" + equippedTitle.PadBoth(MaxWidthFixed - 2, '═') + "╣");

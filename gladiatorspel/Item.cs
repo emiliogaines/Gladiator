@@ -37,7 +37,7 @@ namespace gladiatorspel
             BonusHealth = health;
             BonusStrength = strength;
             Type = itemType;
-            DropChance = dropChance;
+            DropChance = Math.Clamp(dropChance, 0, 1);
         }
 
         public override String ToString()

@@ -10,9 +10,6 @@ namespace gladiatorspel
         static void Main(string[] args)
         {
             Draw.initWindowSettings();
-            //Ska enemy och gladiator attackera med samma styrka hela tiden på en och samma level?
-            //Ska enemy och gladiator ha samma random max min på baseStrenght?
-            //Ska hälsa och stryka synas? JA
 
 
 
@@ -107,6 +104,7 @@ namespace gladiatorspel
 
         private static void handleInput(Gladiator Player, Enemy Opponent)
         {
+            Boolean deleteMode = false;
             //while (Console.In.Peek() != -1)Console.In.Read();
             while (true)
             {
@@ -121,42 +119,52 @@ namespace gladiatorspel
                     }
                     else
                     {
-                        Draw.ShowPlayerInventory(Player);
+                        Draw.ShowPlayerInventory(Player, false);
                     }
                     showingInventory = !showingInventory;
                 }
                 else if (showingInventory && (key.Key == ConsoleKey.D1 || key.Key == ConsoleKey.D2 || key.Key == ConsoleKey.D3 || key.Key == ConsoleKey.D4 || key.Key == ConsoleKey.D5 || key.Key == ConsoleKey.D6 || key.Key == ConsoleKey.D7 || key.Key == ConsoleKey.D8))
                 {
+                    int selected = 0;
                     switch (key.Key)
                     {
                         case ConsoleKey.D1:
-                            Player.EquipItem(Player.inventory.getFromInventory(0));
+                            selected = 1;
                             break;
                         case ConsoleKey.D2:
-                            Player.EquipItem(Player.inventory.getFromInventory(1));
+                            selected = 2;
                             break;
                         case ConsoleKey.D3:
-                            Player.EquipItem(Player.inventory.getFromInventory(2));
+                            selected = 3;
                             break;
                         case ConsoleKey.D4:
-                            Player.EquipItem(Player.inventory.getFromInventory(3));
+                            selected = 4;
                             break;
                         case ConsoleKey.D5:
-                            Player.EquipItem(Player.inventory.getFromInventory(4));
+                            selected = 5;
                             break;
                         case ConsoleKey.D6:
-                            Player.EquipItem(Player.inventory.getFromInventory(5));
+                            selected = 6;
                             break;
                         case ConsoleKey.D7:
-                            Player.EquipItem(Player.inventory.getFromInventory(6));
+                            selected = 7;
                             break;
                         case ConsoleKey.D8:
-                            Player.EquipItem(Player.inventory.getFromInventory(7));
+                            selected = 8;
                             break;
                     }
-                    Draw.ShowPlayerInventory(Player);
+                    if (deleteMode)
+                    {
+                        Player.inventory.inventoryList.RemoveAt(selected);
+                    }
+                    else
+                    {
+                        Player.EquipItem(Player.inventory.getFromInventory(selected));
+                    }
+                    Draw.ShowPlayerInventory(Player, deleteMode);
                     Draw.ShowPlayerStats(Player, false, 0, null);
                 }
+                else if (key.Key == ConsoleKey.D) deleteMode = !deleteMode;
                 else if (key.Key == ConsoleKey.Enter) break;
             }
         }
