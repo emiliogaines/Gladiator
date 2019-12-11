@@ -22,11 +22,11 @@ namespace gladiatorspel
             Gladiator Player = new Gladiator(name);
 
             Random random = new Random();
-            for(int r = 0; r < 5; r++)
-            {
-                int randomNumber = random.Next(0, Item.ListOfItems.Length);
-                Player.inventory.addToInventory(Item.ListOfItems[randomNumber]);
-            }
+            //for(int r = 0; r < 5; r++)
+            //{
+            //    int randomNumber = random.Next(0, Item.ListOfItems.Length);
+            //    Player.inventory.addToInventory(Item.ListOfItems[randomNumber]);
+            //}
 
 
 

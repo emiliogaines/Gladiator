@@ -17,7 +17,7 @@ namespace gladiatorspel
 
         public Logic()
         {
-            
+
         }
 
         public String getName()
@@ -46,35 +46,36 @@ namespace gladiatorspel
         {
             // press anything to attack
 
-          
-                //you attack
 
-            if(Player.GetHealth() > 0)
+            //you attack
+
+            if (Player.GetHealth() > 0)
             {
-                    int dmg = Player.Attack(Opponent);
-                    Draw.ShowEnemyStats(Opponent, true, dmg);
+                int dmg = Player.Attack(Opponent);
+                Draw.ShowEnemyStats(Opponent, true, dmg);
             }
-                
-                
-                //enemy attacks
-            if(Opponent.health > 0)
+
+
+            //enemy attacks
+            if (Opponent.health > 0)
             {
-                    int enemyDmg = Opponent.Attack(Player);
-                    Draw.ShowPlayerStats(Player, true, enemyDmg, Opponent);
+                int enemyDmg = Opponent.Attack(Player);
+                Draw.ShowPlayerStats(Player, true, enemyDmg, Opponent);
             }
             else
             {
                 credit.BattleCredit(Player, Program.Round);
                 DefeatedOpponents.Add(Opponent.name);
+                Opponent.DropItem();
             }
 
             if (Player.GetHealth() <= 0)
             {
                 //File.WriteAllLines(@"C:\\Users\\moa\\Documents\\GitHub\\WriteLines.txt", (IEnumerable<string>)DefeatedOpponents.ToArray());
-                
+
                 using (StreamWriter writer = new StreamWriter("C:\\Users\\moa\\Documents\\GitHub\\GAMESTATS.txt", true))
                 {
-                    foreach(Object opponent in DefeatedOpponents)
+                    foreach (Object opponent in DefeatedOpponents)
                     {
                         writer.WriteLine(opponent.ToString());
                     }
