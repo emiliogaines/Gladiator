@@ -34,12 +34,12 @@ namespace gladiatorspel
 
 
 
-            Draw.ShowPlayerStats(Player);
+            Draw.ShowPlayerStats(Player, false, 0, null);
             Draw.ShowTextPressEnter("< Press Enter to step into the arena >", 5);
             Draw.ShowText("You step into the arena.", 5);
             Draw.ShowText(Opponent.name + " approaches you.", 6);
 
-            Draw.ShowEnemyStats(Opponent, false);
+            Draw.ShowEnemyStats(Opponent, false, 0);
 
             Draw.ShowTextPressEnter("< Press Enter to begin fight >", 8);
             Draw.Clear();
@@ -52,8 +52,8 @@ namespace gladiatorspel
             while(Player.GetHealth() > 0)
             {
                 while (Opponent.health > 0){
-                    Draw.ShowPlayerStats(Player);
-                    Draw.ShowEnemyStats(Opponent, false);
+                    Draw.ShowPlayerStats(Player, false, 0, null);
+                    Draw.ShowEnemyStats(Opponent, false, 0);
                     Draw.FightOptions();
                     handleInput(Player, Opponent);
                     Draw.ClearFightOptions();
@@ -62,8 +62,28 @@ namespace gladiatorspel
 
                  }
 
-                Round++;
+                
+                Draw.Clear();
+                Draw.InitWindow();
+
+                Draw.ShowRound(Round);
+                Draw.ShowPlayerStats(Player, false, 0, null);
+                Draw.ShowEnemyStats(Opponent, false, 0);
+                Draw.centerText("You defeated " + Opponent.name + "!", 5);
+                Draw.centerText("< Press Enter to continue >", 6);
+                Draw.ShowTextPressEnter(" ", 7);
+
                 Opponent = new Enemy(Round);
+                Round++;
+
+                Draw.centerText(Opponent.name + " approaches you.", 5);
+                Draw.ShowEnemyStats(Opponent, false, 0);
+                Draw.centerText("< Press Enter to begin fight >", 6);
+                Draw.ShowTextPressEnter(" ", 7);
+
+                Draw.Clear();
+                Draw.InitWindow();
+                Draw.ShowRound(Round);
             }
 
 
@@ -81,16 +101,16 @@ namespace gladiatorspel
 
         private static void handleInput(Gladiator Player, Enemy Opponent)
         {
+            //while (Console.In.Peek() != -1)Console.In.Read();
             while (true)
             {
-
                 var key = Console.ReadKey(true);
                 if (key.Key == ConsoleKey.I)
                 {
                     if (showingInventory)
                     {
                         Draw.HidePlayerInventory(Player);
-                        Draw.ShowEnemyStats(Opponent, false);
+                        Draw.ShowEnemyStats(Opponent, false, 0);
                         Draw.FightOptions();
                     }
                     else
@@ -129,6 +149,7 @@ namespace gladiatorspel
                             break;
                     }
                     Draw.ShowPlayerInventory(Player);
+                    Draw.ShowPlayerStats(Player, false, 0, null);
                 }
                 else if (key.Key == ConsoleKey.Enter) break;
             }

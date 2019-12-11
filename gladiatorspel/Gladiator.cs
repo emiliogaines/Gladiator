@@ -40,7 +40,7 @@ namespace gladiatorspel
             AttackDamage = strength;
             //Console.WriteLine("You deal {0} damage.", AttackDamage);
             //Console.WriteLine("--------------------");
-            enemy.health -= AttackDamage;
+            enemy.health = Math.Max(0, enemy.health - AttackDamage);
             return AttackDamage;
         }
         public void EquipItem(Item item)
@@ -83,6 +83,9 @@ namespace gladiatorspel
             {
                 bonusHealth += potion.BonusHealth;
             }
+            if (EquippedHelmet != null) bonusHealth += EquippedHelmet.BonusHealth;
+            if (EquippedChest != null) bonusHealth += EquippedChest.BonusHealth;
+            if (EquippedWeapon != null) bonusHealth += EquippedWeapon.BonusHealth;
             return health + bonusHealth;
         }
         public int GetStrength()
@@ -92,6 +95,9 @@ namespace gladiatorspel
             {
                 bonusStrength += potion.BonusStrength;
             }
+            if (EquippedHelmet != null) bonusStrength += EquippedHelmet.BonusStrength;
+            if (EquippedChest != null) bonusStrength += EquippedChest.BonusStrength;
+            if (EquippedWeapon != null) bonusStrength += EquippedWeapon.BonusStrength;
             return strength + bonusStrength;
         }
         public void CheckInventory()

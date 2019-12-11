@@ -25,25 +25,28 @@ namespace gladiatorspel
         {
             // press anything to attack
 
-            if (Opponent.health > 0 && Player.health > 0)
-            {
+          
                 //you attack
-                int dmg = Player.Attack(Opponent);
-                Draw.GladiatorAttack(dmg);
-                Draw.ShowEnemyStats(Opponent, true);
-                //enemy attacks
-                int enemyDmg = Opponent.Attack(Player);
-                Draw.EnemyAttack(enemyDmg);
-                Draw.ShowPlayerStats(Player);
-            }
-            if (Opponent.health <= 0)
-            {
-                //YOU KILLED [ENEMY]
-                //Add to list / rapport över besegrade motståndare
 
+            if(Player.health > 0)
+            {
+                    int dmg = Player.Attack(Opponent);
+                    Draw.ShowEnemyStats(Opponent, true, dmg);
+            }
+                
+                
+                //enemy attacks
+            if(Opponent.health > 0)
+            {
+                    int enemyDmg = Opponent.Attack(Player);
+                    Draw.ShowPlayerStats(Player, true, enemyDmg, Opponent);
+            }
+            else
+            {
                 credit.BattleCredit(Player, Program.Round);
                 DefeatedOpponents.Add(Opponent.name);
             }
+
             if (Player.health <= 0)
             {
                 // YOU DIED

@@ -6,11 +6,14 @@ namespace gladiatorspel
     public class Draw
     {
         const String Title = "[ GLADIATOR ]";
-        private static int WIDTH;
-        private static int HEIGHT;
+        public static int WIDTH;
+        public static int HEIGHT;
 
         private static List<int> playerActions = new List<int> ();
         private static List<int> enemyActions = new List<int>();
+
+        private static int enemyDrawWidth = 0;
+        private static int gladiatorDrawWidth = 0;
 
 
 
@@ -118,31 +121,48 @@ namespace gladiatorspel
             }
         }
 
-        public static void ShowPlayerStats(Gladiator gladiator)
+        public static void ShowPlayerStats(Gladiator gladiator, Boolean didDmg, int dmg, Enemy enemy)
         {
             prepCursor(2, HEIGHT - 2);
+            Console.Write(" ".PadRight(gladiatorDrawWidth));
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(gladiator.name + " [HP: " + gladiator.GetHealth() + " Attack: " + gladiator.GetStrength() + "]");
+            String drawText = gladiator.name + " [HP: " + gladiator.GetHealth() + " Attack: " + gladiator.GetStrength() + "]";
+            gladiatorDrawWidth = drawText.Length;
+            prepCursor(2, HEIGHT - 2);
+            Console.Write(drawText);
             Console.ForegroundColor = ConsoleColor.White;
             finishedCursor();
+            if (didDmg) { 
+                ConsoleColor[] colors = { ConsoleColor.White, ConsoleColor.White, ConsoleColor.Gray, ConsoleColor.Gray, ConsoleColor.DarkGray, ConsoleColor.DarkGray, ConsoleColor.Black };
+                for (int i = 0; i < colors.Length; i++)
+                {
+                    EnemyAttack(-dmg, colors[i], enemy);
+                    System.Threading.Thread.Sleep(250);
+                }
+            }
         }
 
-        public static void ShowEnemyStats(Enemy enemy, Boolean loading)
+        public static void ShowEnemyStats(Enemy enemy, Boolean loading, int dmg)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             String enemyText = enemy.name + " [HP: " + enemy.health + " Attack: " + enemy.strength + "]";
+            prepCursor(WIDTH - 2 - enemyDrawWidth, HEIGHT - 2);
+            Console.Write(" ".PadRight(enemyDrawWidth));
+            enemyDrawWidth = enemyText.Length;
             prepCursor(WIDTH - 2 - enemyText.Length, HEIGHT - 2);
             Console.Write(enemyText);
             Console.ForegroundColor = ConsoleColor.White;
 
             if (loading)
             {
+                ConsoleColor[] colors = { ConsoleColor.White, ConsoleColor.White, ConsoleColor.Gray, ConsoleColor.Gray, ConsoleColor.DarkGray, ConsoleColor.DarkGray, ConsoleColor.Black };
                 Char[] indicators = { '/', '-', '\\', '|', '/', '-', '\\' };
-                foreach(Char indicator in indicators)
+                for(int i = 0; i < indicators.Length; i++)
                 {
                     prepCursor(WIDTH - 7 - enemyText.Length, HEIGHT - 2);
-                    Console.Write("[" + indicator + "] ");
+                    Console.Write("[" + indicators[i] + "] ");
                     finishedCursor();
+                    GladiatorAttack(-dmg, colors[i]);
                     System.Threading.Thread.Sleep(250);
                 }
                 prepCursor(WIDTH - 7 - enemyText.Length, HEIGHT - 2);
@@ -267,40 +287,42 @@ namespace gladiatorspel
             Draw.ShowText("< Press Enter to attack >".PadBoth(WIDTH - 2, ' '), 6);
         }
 
+        public static void centerText(String text, int line)
+        {
+            Draw.ShowText(text.PadBoth(WIDTH - 2, ' '), line);
+        }
+
         public static void ClearFightOptions()
         {
             Draw.ShowText("".PadBoth(WIDTH - 2, ' '), 6);
         }
 
-        public static void EnemyAttack(int dmg)
+        public static void EnemyAttack(int dmg, ConsoleColor color, Enemy enemy)
         {
-            playerActions.Add(-dmg);
-            enemyActions.Add(dmg);
-            drawAttackHistory();
+            String dmgText = dmg + " DMG";
+            String attackText = enemy.name + " ATTACK!";
+            prepCursor(2, HEIGHT - 3);
+            Console.ForegroundColor = color;
+            Console.Write(dmgText);
+            prepCursor(WIDTH - 3 - attackText.Length, HEIGHT - 3);
+            Console.Write(attackText);
+            Console.ForegroundColor = ConsoleColor.White;
+            finishedCursor();
         }
 
-        public static void GladiatorAttack(int dmg)
+        public static void GladiatorAttack(int dmg, ConsoleColor color)
         {
-            playerActions.Add(dmg);
-            enemyActions.Add(-dmg);
-            drawAttackHistory();
+            String dmgText = dmg + " DMG";
+            String attackText = "YOU ATTACK!";
+            prepCursor(WIDTH - 3 - dmgText.Length, HEIGHT - 3);
+            Console.ForegroundColor = color;
+            Console.Write(dmgText);
+            prepCursor(2, HEIGHT - 3);
+            Console.Write(attackText);
+            Console.ForegroundColor = ConsoleColor.White;
+            finishedCursor();
         }
 
-        public static void drawAttackHistory()
-        {
-            for (int i = 0; i < playerActions.Count; i++)
-            {
-                prepCursor(2, HEIGHT - 2 - playerActions.Count + i);
-                Console.Write(playerActions[i]);
-                finishedCursor();
-            }
 
-            for (int i = 0; i < enemyActions.Count; i++)
-            {
-                prepCursor(WIDTH - 3 - enemyActions[i].ToString().Length, HEIGHT - 2 - enemyActions.Count + i);
-                Console.Write(enemyActions[i]);
-                finishedCursor();
-            }
-        }
     }
 }
