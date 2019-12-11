@@ -53,7 +53,7 @@ namespace gladiatorspel
 
             if (Player.health <= 0)
             {
-                File.WriteAllLines(@"C:\Users\Public\TestFolder\WriteLines.txt", (IEnumerable<string>)DefeatedOpponents.ToArray());
+                File.WriteAllLines(@"C:\\Users\\moa\\Documents\\GitHub\\WriteLines.txt", (IEnumerable<string>)DefeatedOpponents.ToArray());
                 /*
                 using (StreamWriter writer = new StreamWriter("C:\\Users\\moa\\Documents\\GitHub", true))
                 {
