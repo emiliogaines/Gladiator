@@ -14,7 +14,7 @@ namespace gladiatorspel
             inventoryList.Add(item);
         }
 
-        public Item getFromInventory(int position)
+        public Item GetFromInventory(int position)
         {
             if(inventoryList.Count > position)
             {

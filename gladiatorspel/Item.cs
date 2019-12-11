@@ -13,7 +13,7 @@ namespace gladiatorspel
             new Item("Baseball Cap", 15,5, ItemType.HELMET,0.20),
             new Item("Fishing Hat", 5,5, ItemType.HELMET,0.75),
             new Item("Flanell Shirt",5,15, ItemType.CHEST,0.30),
-            new Item("Tube Top",0,10,ItemType.CHEST,.40),
+            new Item("Tube Top",0,10,ItemType.CHEST,0.40),
             new Item("Satans Hoodie",35,35,ItemType.CHEST,0.01),
             new Item("Sword of Power",0,30,ItemType.WEAPON,0.25),
             new Item("Fists of Fury",0,20,ItemType.WEAPON,0.35),
@@ -31,7 +31,7 @@ namespace gladiatorspel
 
         public string Name { get; set; }
 
-        public static Item getRandomItem()
+        public static Item GetRandomItem()
         {
             Random random = new Random();
             Double randomValue;

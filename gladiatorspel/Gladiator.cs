@@ -103,7 +103,7 @@ namespace gladiatorspel
             if (EquippedWeapon != null) bonusStrength += EquippedWeapon.BonusStrength;
             return baseStrength + bonusStrength;
         }
-        public void dealDamage(int damage)
+        public void DealDamage(int damage)
         {
             baseHealth -= damage; 
         }
