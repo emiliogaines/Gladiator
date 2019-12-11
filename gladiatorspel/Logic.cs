@@ -42,7 +42,7 @@ namespace gladiatorspel
         }
 
 
-        public void Fight(Gladiator Player, Enemy Opponent)
+        public Item Fight(Gladiator Player, Enemy Opponent)
         {
             // press anything to attack
 
@@ -66,7 +66,7 @@ namespace gladiatorspel
             {
                 credit.BattleCredit(Player, Program.Round);
                 DefeatedOpponents.Add(Opponent.name);
-                Opponent.DropItem();
+                return Opponent.DropItem();
             }
 
             if (Player.GetHealth() <= 0)
