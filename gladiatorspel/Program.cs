@@ -63,7 +63,7 @@ namespace gladiatorspel
 
                  }
 
-                
+                Player.RemoveActivePotion();
                 Draw.Clear();
                 Draw.InitWindow();
 

@@ -60,21 +60,26 @@ namespace gladiatorspel
                     if (EquippedWeapon != null) inventory.addToInventory(EquippedWeapon);
                     EquippedWeapon = item;
                     break;
-                default:
-                    return;
+                case ItemType.POTION:
+                        UsePotion((Potions)item);
+                    break;
             }
             inventory.inventoryList.Remove(item);
         }
         public void UsePotion(Potions potion)
         {
-            health = GetHealth();
-            strength = GetStrength();
             ActivePotions.Add(potion);
 
         }
         public void RemoveActivePotion()
         {
-            ActivePotions.Clear();
+            foreach(Potions potion in ActivePotions)
+            {
+                if(potion.BonusStrength > 0)
+                {
+                    potion.BonusStrength = 0;
+                }
+            }
         }
         public int GetHealth()
         {
