@@ -312,7 +312,7 @@ namespace gladiatorspel
         public static void EnemyAttack(int dmg, ConsoleColor color, Enemy enemy)
         {
             String dmgText = dmg + " HP";
-            String attackText = enemy.name + " ATTACK!";
+            String attackText = "ATTACKS!";
             prepCursor(2, HEIGHT - 3);
             Console.ForegroundColor = color;
             Console.Write(dmgText);
@@ -325,7 +325,7 @@ namespace gladiatorspel
         public static void GladiatorAttack(int dmg, ConsoleColor color)
         {
             String dmgText = dmg + " HP";
-            String attackText = "YOU ATTACK!";
+            String attackText = "ATTACKS!";
             prepCursor(WIDTH - 3 - dmgText.Length, HEIGHT - 3);
             Console.ForegroundColor = color;
             Console.Write(dmgText);
