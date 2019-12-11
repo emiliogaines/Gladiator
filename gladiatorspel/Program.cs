@@ -9,22 +9,15 @@ namespace gladiatorspel
         public static int Round = 0;
         static void Main(string[] args)
         {
-            Draw.initWindowSettings();
-
-
-
             String name;
-
+            Draw.initWindowSettings();
             Draw.InitWindow();
-
             Draw.displayStartup();
-
             Draw.ShowText("Greetings Gladiator!", 1);
             name = Draw.ShowTextInput("What is your name?: ", 2);
             Draw.ShowText("That is a shit name. Please step into the arena " + name, 3);
+
             Gladiator Player = new Gladiator(name);
-
-
 
             Draw.ShowPlayerStats(Player, false, 0, null);
             Draw.ShowTextPressEnter("< Press Enter to step into the arena >", 5);
@@ -55,7 +48,6 @@ namespace gladiatorspel
                 }
                 Draw.Clear();
                 Draw.InitWindow();
-
                 Draw.ShowRound(Round);
                 while (Opponent.health > 0 && Player.GetHealth() > 0)
                 {
@@ -64,19 +56,15 @@ namespace gladiatorspel
                     Draw.FightOptions();
                     handleInput(Player, Opponent);
                     Draw.ClearFightOptions();
-
                     droppedItem = logic.Fight(Player, Opponent);
-
                 }
                 if (Player.GetHealth() <= 0)
                 {
                     break;
                 }
-
                 Player.RemoveActivePotion();
                 Draw.Clear();
                 Draw.InitWindow();
-
                 Draw.ShowRound(Round);
                 Draw.ShowPlayerStats(Player, false, 0, null);
                 Draw.ShowEnemyStats(Opponent, false, 0);
@@ -84,11 +72,7 @@ namespace gladiatorspel
                 if (droppedItem != null) Draw.centerText(Opponent.name + " dropped " + droppedItem.Name, 6);
                 Draw.centerText("< Press Enter to continue >", 7);
                 Draw.ShowTextPressEnter(" ", 8);
-
                 Player.inventory.AddToInventory(droppedItem);
-
-
-
             } while (Player.GetHealth() > 0);
 
             Draw.Clear();
@@ -99,13 +83,7 @@ namespace gladiatorspel
             Draw.centerText("| |__| |/ ____ \\| |  | | |____  | |__| | \\  /  | |____| | \\ \\ ", Draw.HEIGHT / 2);
             Draw.centerText(" \\_____/_/    \\_\\_|  |_|______|  \\____/   \\/   |______|_|  \\_\\", Draw.HEIGHT / 2 + 1);
             Draw.centerText("You survived to Round (" + Round + ") and gathered " + Player.credits + " credits!", Draw.HEIGHT / 2 + 3);
-            //Draw.centerText("< Press Enter to continue >", Draw.HEIGHT / 2 + 5);
-            //Draw.ShowTextPressEnter("", Draw.HEIGHT / 2 + 6);
             Environment.Exit(0);
-
-
-
-
             /*
               __  __    ___       _        ___   ____       ____   ____    ___   _   _    ____   _____
              |  \/  |  / _ \     / \      |_ _| / ___|     / ___| |  _ \  |_ _| | \ | |  / ___| | ____|
@@ -114,13 +92,10 @@ namespace gladiatorspel
              |_|  |_|  \___/  /_/   \_\   |___| |____/     \____| |_| \_\ |___| |_| \_|  \____| |_____|
 
              */
-
         }
-
         private static void handleInput(Gladiator Player, Enemy Opponent)
         {
             Boolean deleteMode = false;
-            //while (Console.In.Peek() != -1)Console.In.Read();
             while (true)
             {
                 var key = Console.ReadKey(true);
@@ -138,7 +113,6 @@ namespace gladiatorspel
                         Draw.ShowPlayerInventory(Player, false);
                     }
                     showingInventory = !showingInventory;
-
                 }
                 else if (showingInventory && (key.Key == ConsoleKey.D1 || key.Key == ConsoleKey.D2 ||
                     key.Key == ConsoleKey.D3 || key.Key == ConsoleKey.D4 || key.Key == ConsoleKey.D5 ||
@@ -193,7 +167,6 @@ namespace gladiatorspel
         }
     }
 }
-
 namespace System
 {
     public static class StringExtensions
