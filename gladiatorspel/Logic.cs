@@ -71,9 +71,8 @@ namespace gladiatorspel
 
             if (Player.GetHealth() <= 0)
             {
-                //File.WriteAllLines(@"C:\\Users\\moa\\Documents\\GitHub\\WriteLines.txt", (IEnumerable<string>)DefeatedOpponents.ToArray());
-
-                using (StreamWriter writer = new StreamWriter("C:\\Users\\moa\\Documents\\GitHub\\GAMESTATS.txt", true))
+                String textFile = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".txt";
+                using (StreamWriter writer = new StreamWriter(textFile, true))
                 {
                     foreach (Object opponent in DefeatedOpponents)
                     {
