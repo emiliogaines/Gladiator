@@ -10,6 +10,7 @@ namespace gladiatorspel
         public static int Round = 1;
         static void Main(string[] args)
         {
+            Draw.initWindowSettings();
             //Ska enemy och gladiator attackera med samma styrka hela tiden på en och samma level?
             //Ska enemy och gladiator ha samma random max min på baseStrenght?
             //Ska hälsa och stryka synas? JA
