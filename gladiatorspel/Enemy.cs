@@ -35,7 +35,7 @@ namespace gladiatorspel
             AttackDamage = strength;
             //Console.WriteLine("{0} dealt {1} damage to you.",name, AttackDamage);
             //Console.WriteLine("--------------------");
-            player.health = Math.Max(0, player.GetHealth() - AttackDamage);
+            player.dealDamage(AttackDamage);
             return AttackDamage;
 
         }

@@ -74,8 +74,9 @@ namespace gladiatorspel
                 Draw.centerText("< Press Enter to continue >", 6);
                 Draw.ShowTextPressEnter(" ", 7);
 
-                Opponent = new Enemy(Round);
                 Round++;
+                Opponent = new Enemy(Round);
+                
 
                 Draw.centerText(Opponent.name + " approaches you.", 5);
                 Draw.ShowEnemyStats(Opponent, false, 0);

@@ -11,8 +11,8 @@ namespace gladiatorspel
 
         readonly Random random = new Random();
         public string name;
-        public int baseHealth, health;
-        public int baseStrength, strength;
+        public int baseHealth;
+        public int baseStrength;
         public Inventory inventory = new Inventory();
         public int credits;
 
@@ -29,8 +29,6 @@ namespace gladiatorspel
             baseHealth = 10;
             baseStrength = random.Next(5, 11);
             credits = 0;
-            health = baseHealth;
-            strength = baseStrength;
         }
 
 
@@ -91,7 +89,7 @@ namespace gladiatorspel
             if (EquippedHelmet != null) bonusHealth += EquippedHelmet.BonusHealth;
             if (EquippedChest != null) bonusHealth += EquippedChest.BonusHealth;
             if (EquippedWeapon != null) bonusHealth += EquippedWeapon.BonusHealth;
-            return health + bonusHealth;
+            return Math.Max(0, baseHealth + bonusHealth);
         }
         public int GetStrength()
         {
@@ -103,7 +101,11 @@ namespace gladiatorspel
             if (EquippedHelmet != null) bonusStrength += EquippedHelmet.BonusStrength;
             if (EquippedChest != null) bonusStrength += EquippedChest.BonusStrength;
             if (EquippedWeapon != null) bonusStrength += EquippedWeapon.BonusStrength;
-            return strength + bonusStrength;
+            return baseStrength + bonusStrength;
+        }
+        public void dealDamage(int damage)
+        {
+            baseHealth -= damage; 
         }
         public void CheckInventory()
         {

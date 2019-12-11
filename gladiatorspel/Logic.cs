@@ -31,7 +31,7 @@ namespace gladiatorspel
           
                 //you attack
 
-            if(Player.health > 0)
+            if(Player.GetHealth() > 0)
             {
                     int dmg = Player.Attack(Opponent);
                     Draw.ShowEnemyStats(Opponent, true, dmg);
@@ -50,7 +50,7 @@ namespace gladiatorspel
                 DefeatedOpponents.Add(Opponent.name);
             }
 
-            if (Player.health <= 0)
+            if (Player.GetHealth() <= 0)
             {
                 //File.WriteAllLines(@"C:\\Users\\moa\\Documents\\GitHub\\WriteLines.txt", (IEnumerable<string>)DefeatedOpponents.ToArray());
                 
