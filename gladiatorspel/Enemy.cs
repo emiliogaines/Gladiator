@@ -27,6 +27,8 @@ namespace gladiatorspel
             baseHealth = random.Next(10, 21);
             baseStrength = random.Next(1, 4);
 =======
+            baseHealth = random.Next(10,21);
+            baseStrength = random.Next(3,6);
 >>>>>>> 33f638d796f3884918c2d530c8c70d597431e007
 
             health = baseHealth * level;
