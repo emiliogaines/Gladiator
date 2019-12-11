@@ -83,6 +83,7 @@ namespace gladiatorspel
                 }
                 // YOU DIED
             }
+            return null;
         }
 
     }
