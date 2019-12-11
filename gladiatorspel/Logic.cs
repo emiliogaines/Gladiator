@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace gladiatorspel
@@ -46,6 +47,13 @@ namespace gladiatorspel
             }
             if (Player.health <= 0)
             {
+                using (StreamWriter writer = new StreamWriter("C:\\Users\\moa\\Documents", true))
+                {
+                    foreach(Object opponent in DefeatedOpponents)
+                    {
+                        writer.WriteLine(opponent.ToString());
+                    }
+                }
                 // YOU DIED
             }
         }
