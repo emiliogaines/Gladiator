@@ -15,7 +15,7 @@ namespace gladiatorspel
         public static readonly string[] EnemyNames = {
             "Gurra Grr", "Shirley Clamp", "Jack the Ripper", "Sid Vicious",
             "Jack The Knife", "Hannibal", "Deathwing","The Lich King", "Polar Bear","Zombie", "Angry Pigeon",
-            "Mad Bee", "Confused Seagull","Ragnaros","Mr. Bean","Sherlock Golmes"};
+            "Mad Bee", "Confused Seagull","Ragnaros","Mr. Bean","Sherlock Holmes"};
         
 
 
