@@ -26,7 +26,7 @@ namespace gladiatorspel
         public Gladiator(string Name)
         {
             name = Name;
-            baseHealth = 10;
+            baseHealth = 30;
             baseStrength = random.Next(5, 11);
             credits = 0;
         }
