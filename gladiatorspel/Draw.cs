@@ -205,7 +205,7 @@ namespace gladiatorspel
             }
             String equippedTitle = "[ EQUIPPED  ]";
             Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 6 - Length);
-            Console.Write("╔" + equippedTitle.PadBoth(MaxWidthFixed - 2, '═') + "╣");
+            Console.Write("╔" + equippedTitle.PadBoth(MaxWidthFixed, '═') + "╣");
             for (int i = 0; i < 3; i++)
             {
                 String itemName;
@@ -222,7 +222,7 @@ namespace gladiatorspel
                 Console.Write(drawString);
             }
             Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 2 - Length);
-            Console.Write("╠" + inventoryTitle.PadBoth(MaxWidthFixed - 2, '═') + "╣");
+            Console.Write("╠" + inventoryTitle.PadBoth(MaxWidthFixed, '═') + "╣");
             for (int i = 0; i < 8; i++)
             {
                 String itemName = "";
@@ -281,7 +281,7 @@ namespace gladiatorspel
         public static void ShowRound(int round)
         {
             String levelText = "[ ROUND " + round + " ]";
-            Draw.ShowText(levelText.PadBoth(WIDTH - 2, ' '), 1);
+            Draw.ShowText(levelText.PadBoth(WIDTH, ' '), 1);
         }
 
         public static void Clear()
@@ -296,17 +296,19 @@ namespace gladiatorspel
 
         public static void FightOptions()
         {
-            Draw.ShowText("< Press Enter to attack >".PadBoth(WIDTH - 2, ' '), 6);
+            Draw.ShowText("< Press Enter to attack >".PadBoth(WIDTH, ' '), 6);
         }
 
         public static void centerText(String text, int line)
         {
-            Draw.ShowText(text.PadBoth(WIDTH - 2, ' '), line);
+            prepCursor(1, line);
+            Console.Write(text.PadBoth(WIDTH, ' '));
+            finishedCursor();
         }
 
         public static void ClearFightOptions()
         {
-            Draw.ShowText("".PadBoth(WIDTH - 2, ' '), 6);
+            Draw.ShowText("".PadBoth(WIDTH, ' '), 6);
         }
 
         public static void EnemyAttack(int dmg, ConsoleColor color, Enemy enemy)
@@ -333,6 +335,58 @@ namespace gladiatorspel
             Console.Write(attackText);
             Console.ForegroundColor = ConsoleColor.White;
             finishedCursor();
+        }
+
+        public static void displayStartup()
+        {
+            String developedText = "[ Developed by MnMnM ]";
+            String[] arrayStartupText =
+            {
+                "  _____ _               _____ _____       _______ ____  _____  ",
+                " / ____| |        /\\   |  __ \\_   _|   /\\|__   __/ __ \\|  __ \\ ",
+                "| |  __| |       /  \\  | |  | || |    /  \\  | | | |  | | |__) |",
+                "| | |_ | |      / /\\ \\ | |  | || |   / /\\ \\ | | | |  | |  _  / ",
+                "| |__| | |____ / ____ \\| |__| || |_ / ____ \\| | | |__| | | \\ \\ ",
+                " \\_____|______/_/    \\_\\_____/_____/_/    \\_\\_|  \\____/|_|  \\_\\",
+                "",
+                developedText
+            };
+
+            ConsoleColor[] colors = {
+                ConsoleColor.Black,
+                ConsoleColor.DarkGray,
+                ConsoleColor.Gray,
+                ConsoleColor.White,
+                ConsoleColor.Cyan,
+                ConsoleColor.White,
+                ConsoleColor.Cyan,
+                ConsoleColor.White,
+                ConsoleColor.Gray,
+                ConsoleColor.DarkGray,
+                ConsoleColor.Black
+            };
+            System.Threading.Thread.Sleep(1000);
+            /*for (int i = 0; i < arrayStartupText.Length; i++)
+            {
+                Draw.centerText(arrayStartupText[i], (HEIGHT / 2 - arrayStartupText.Length / 2 + i));
+                finishedCursor();
+
+                System.Threading.Thread.Sleep(400);
+            }*/
+            for (int i = 0; i < colors.Length; i++)
+            {
+                Console.ForegroundColor = colors[i];
+                for (int o = 0; o < arrayStartupText.Length; o++)
+                {
+                    Draw.centerText(arrayStartupText[o], (HEIGHT / 2 - arrayStartupText.Length / 2 + o));
+                }
+                
+                finishedCursor();
+
+                System.Threading.Thread.Sleep(600);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+
         }
 
 

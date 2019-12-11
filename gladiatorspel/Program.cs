@@ -16,12 +16,14 @@ namespace gladiatorspel
             String name;
 
             Draw.InitWindow();
+
+            Draw.displayStartup();
+
             Draw.ShowText("Greetings Gladiator!", 1);
             name = Draw.ShowTextInput("What is your name?: ", 2);
             Draw.ShowText("That is a shit name. Please step into the arena " + name, 3);
             Gladiator Player = new Gladiator(name);
 
-            Random random = new Random();
             //for(int r = 0; r < 5; r++)
             //{
             //    int randomNumber = random.Next(0, Item.ListOfItems.Length);
@@ -73,7 +75,7 @@ namespace gladiatorspel
                 }
                 if(Player.GetHealth() <= 0)
                 {
-                    return;
+                    break;
                 }
 
                 Player.RemoveActivePotion();
@@ -93,6 +95,19 @@ namespace gladiatorspel
                 
                
             } while (Player.GetHealth() > 0);
+
+            Draw.Clear();
+            Draw.centerText("  _____          __  __ ______    ______      ________ _____  ", Draw.HEIGHT/2 - 4);
+            Draw.centerText(" / ____|   /\\   |  \\/  |  ____|  / __ \\ \\    / /  ____|  __ \\ ", Draw.HEIGHT / 2 - 3);
+            Draw.centerText("| |  __   /  \\  | \\  / | |__    | |  | \\ \\  / /| |__  | |__) |", Draw.HEIGHT / 2 - 2);
+            Draw.centerText("| | |_ | / /\\ \\ | |\\/| |  __|   | |  | |\\ \\/ / |  __| |  _  / ", Draw.HEIGHT / 2 - 1);
+            Draw.centerText("| |__| |/ ____ \\| |  | | |____  | |__| | \\  /  | |____| | \\ \\ ", Draw.HEIGHT / 2);
+            Draw.centerText(" \\_____/_/    \\_\\_|  |_|______|  \\____/   \\/   |______|_|  \\_\\", Draw.HEIGHT / 2 + 1);
+            Draw.centerText("You survived to Round (" + Round + ") and gathered " + Player.credits + " credits!", Draw.HEIGHT / 2 + 3);
+            //Draw.centerText("< Press Enter to continue >", Draw.HEIGHT / 2 + 5);
+            //Draw.ShowTextPressEnter("", Draw.HEIGHT / 2 + 6);
+            Environment.Exit(0);
+
 
 
 
@@ -190,7 +205,7 @@ namespace System
         {
             int spaces = length - str.Length;
             int padLeft = spaces / 2 + str.Length;
-            return str.PadLeft(padLeft, chr).PadRight(length, chr);
+            return str.PadLeft(padLeft - 1, chr).PadRight(length - 2, chr);
         }
     }
 }

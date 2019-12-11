@@ -77,7 +77,7 @@ namespace gladiatorspel
                 {
                     foreach (Object opponent in DefeatedOpponents)
                     {
-                        writer.WriteLine(opponent.ToString());
+                        writer.WriteLine(opponent);
                     }
                     writer.WriteLine(Player.credits);
                 }
