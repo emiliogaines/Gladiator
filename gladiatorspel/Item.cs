@@ -9,20 +9,20 @@ namespace gladiatorspel
     {
         public static Item[] ListOfItems =
         {
-            new Item("Skullcrusher Helmet", 0, 40, ItemType.HELMET),
-            new Item("Baseball Cap", 15,5, ItemType.HELMET),
-            new Item("Fishing Hat", 5,5, ItemType.HELMET),
-            new Item("Flanell Shirt",5,15, ItemType.CHEST),
-            new Item("Tube Top",0,10,ItemType.CHEST),
-            new Item("Satans Hoodie",25,25,ItemType.CHEST),
-            new Item("Sword of Power",0,30,ItemType.WEAPON),
-            new Item("Fists of Fury",0,20,ItemType.WEAPON),
-            new Item("Kitten Mitten",10,10,ItemType.WEAPON),
-            new Item("AK-47",0,60,ItemType.WEAPON),
-            new Potions("Small Health Potion",15,0,ItemType.POTION),
-            new Potions("Large Health Potion",35,0,ItemType.POTION),
-            new Potions("Small Strength Potion",0,15,ItemType.POTION),
-            new Potions("Large Strength Potion",0,35,ItemType.POTION)
+            new Item("Skullcrusher Helmet", 0, 50, ItemType.HELMET,0.01),
+            new Item("Baseball Cap", 15,5, ItemType.HELMET,0.20),
+            new Item("Fishing Hat", 5,5, ItemType.HELMET,0.75),
+            new Item("Flanell Shirt",5,15, ItemType.CHEST,0.30),
+            new Item("Tube Top",0,10,ItemType.CHEST,.40),
+            new Item("Satans Hoodie",35,35,ItemType.CHEST,0.01),
+            new Item("Sword of Power",0,30,ItemType.WEAPON,0.25),
+            new Item("Fists of Fury",0,20,ItemType.WEAPON,0.35),
+            new Item("Kitten Mitten",10,10,ItemType.WEAPON,0.40),
+            new Item("AK-47",0,60,ItemType.WEAPON,0.01),
+            new Potions("Small Health Potion",15,0,ItemType.POTION,0.20),
+            new Potions("Large Health Potion",35,0,ItemType.POTION,0.15),
+            new Potions("Small Strength Potion",0,15,ItemType.POTION,0.35),
+            new Potions("Large Strength Potion",0,35,ItemType.POTION,0.30)
         };
         public int BonusHealth { get; set; }
         public int BonusStrength { get; set; }
