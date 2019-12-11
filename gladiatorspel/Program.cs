@@ -44,7 +44,7 @@ namespace gladiatorspel
             do
             {
                 Round++;
-                Opponent = new Enemy(Round);
+                Opponent = new Enemy(logic.getName(), Round);
                 Draw.ShowEnemyStats(Opponent, false, 0);
                 if (Round != 1) { 
                     Draw.centerText(Opponent.name + " approaches you.", 6);
@@ -61,7 +61,7 @@ namespace gladiatorspel
                 Draw.InitWindow();
 
                 Draw.ShowRound(Round);
-                while (Opponent.health > 0)
+                while (Opponent.health > 0 && Player.GetHealth() > 0)
                 {
                     Draw.ShowPlayerStats(Player, false, 0, null);
                     Draw.ShowEnemyStats(Opponent, false, 0);
@@ -71,6 +71,10 @@ namespace gladiatorspel
 
                     logic.Fight(Player, Opponent);
 
+                }
+                if(Player.GetHealth() <= 0)
+                {
+                    return;
                 }
 
                 Player.RemoveActivePotion();

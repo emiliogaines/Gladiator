@@ -11,7 +11,25 @@ namespace gladiatorspel
     public class Logic
     {
         readonly Credit credit = new Credit();
-        public ArrayList DefeatedOpponents = new ArrayList(); 
+        readonly Random random = new Random();
+        public ArrayList DefeatedOpponents = new ArrayList();
+        private List<String> names = new List<String>();
+
+        public Logic()
+        {
+            
+        }
+
+        public String getName()
+        {
+            if (names.Count == 0)
+            {
+                names.AddRange(Enemy.EnemyNames);
+            }
+            String randomName = names[random.Next(names.Count)];
+            names.Remove(randomName);
+            return randomName;
+        }
 
 
         public void DisplayMenu()
