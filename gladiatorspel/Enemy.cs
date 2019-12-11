@@ -23,13 +23,10 @@ namespace gladiatorspel
         {
             int level = 1 + (round / 3);
             name = EnemyNames[random.Next(EnemyNames.Length)];
-<<<<<<< HEAD
             baseHealth = random.Next(10, 21);
             baseStrength = random.Next(1, 4);
-=======
             baseHealth = random.Next(10,21);
             baseStrength = random.Next(3,6);
->>>>>>> 33f638d796f3884918c2d530c8c70d597431e007
 
             health = baseHealth * level;
             strength = baseStrength * level;
