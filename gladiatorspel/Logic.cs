@@ -78,6 +78,7 @@ namespace gladiatorspel
                     {
                         writer.WriteLine(opponent.ToString());
                     }
+                    writer.WriteLine(Player.credits);
                 }
                 // YOU DIED
             }
