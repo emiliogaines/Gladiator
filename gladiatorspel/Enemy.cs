@@ -47,7 +47,6 @@ namespace gladiatorspel
         {
             Item droppedItem = (Item.ListOfItems[random.Next(Item.ListOfItems.Length)]);
             return droppedItem;
-
         }
     }
 }

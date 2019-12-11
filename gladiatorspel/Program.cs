@@ -37,6 +37,7 @@ namespace gladiatorspel
 
             Logic logic = new Logic();
             Enemy Opponent;
+            Item droppedItem = null;
 
             do
             {
@@ -66,7 +67,7 @@ namespace gladiatorspel
                     handleInput(Player, Opponent);
                     Draw.ClearFightOptions();
 
-                    logic.Fight(Player, Opponent);
+                    droppedItem = logic.Fight(Player, Opponent);
 
                 }
                 if(Player.GetHealth() <= 0)
@@ -82,8 +83,11 @@ namespace gladiatorspel
                 Draw.ShowPlayerStats(Player, false, 0, null);
                 Draw.ShowEnemyStats(Opponent, false, 0);
                 Draw.centerText("You defeated " + Opponent.name + "!", 5);
-                Draw.centerText("< Press Enter to continue >", 6);
+                if(droppedItem != null)Draw.centerText(Opponent.name + " dropped " + droppedItem.Name, 6);
+                Draw.centerText("< Press Enter to continue >", 7);
                 Draw.ShowTextPressEnter(" ", 7);
+
+                Player.inventory.addToInventory(droppedItem);
 
                 
                
