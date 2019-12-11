@@ -14,7 +14,6 @@ namespace gladiatorspel
             Credits = 100;
             Money = random.Next(50, 151);
         }
-
         public void BattleCredit(Gladiator gladiator, int level)
         {
             gladiator.credits += Credits * level;
@@ -23,7 +22,5 @@ namespace gladiatorspel
         {
             gladiator.credits += Money;
         }
-
-       
     }
 }

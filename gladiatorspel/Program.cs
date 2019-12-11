@@ -24,18 +24,12 @@ namespace gladiatorspel
             Draw.ShowText("That is a shit name. Please step into the arena " + name, 3);
             Gladiator Player = new Gladiator(name);
 
-            //for(int r = 0; r < 5; r++)
-            //{
-            //    int randomNumber = random.Next(0, Item.ListOfItems.Length);
-            //    Player.inventory.addToInventory(Item.ListOfItems[randomNumber]);
-            //}
-
 
 
             Draw.ShowPlayerStats(Player, false, 0, null);
             Draw.ShowTextPressEnter("< Press Enter to step into the arena >", 5);
             Draw.ShowText("You step into the arena.", 5);
-           
+
 
             Logic logic = new Logic();
             Enemy Opponent;
@@ -46,7 +40,8 @@ namespace gladiatorspel
                 Round++;
                 Opponent = new Enemy(logic.GetName(), Round);
                 Draw.ShowEnemyStats(Opponent, false, 0);
-                if (Round != 1) { 
+                if (Round != 1)
+                {
                     Draw.centerText(Opponent.name + " approaches you.", 6);
                     Draw.centerText("", 7);
                     Draw.centerText("< Press Enter to begin fight >", 8);
@@ -73,7 +68,7 @@ namespace gladiatorspel
                     droppedItem = logic.Fight(Player, Opponent);
 
                 }
-                if(Player.GetHealth() <= 0)
+                if (Player.GetHealth() <= 0)
                 {
                     break;
                 }
@@ -86,18 +81,18 @@ namespace gladiatorspel
                 Draw.ShowPlayerStats(Player, false, 0, null);
                 Draw.ShowEnemyStats(Opponent, false, 0);
                 Draw.centerText("You defeated " + Opponent.name + "!", 5);
-                if(droppedItem != null)Draw.centerText(Opponent.name + " dropped " + droppedItem.Name, 6);
+                if (droppedItem != null) Draw.centerText(Opponent.name + " dropped " + droppedItem.Name, 6);
                 Draw.centerText("< Press Enter to continue >", 7);
                 Draw.ShowTextPressEnter(" ", 8);
 
                 Player.inventory.AddToInventory(droppedItem);
 
-                
-               
+
+
             } while (Player.GetHealth() > 0);
 
             Draw.Clear();
-            Draw.centerText("  _____          __  __ ______    ______      ________ _____  ", Draw.HEIGHT/2 - 4);
+            Draw.centerText("  _____          __  __ ______    ______      ________ _____  ", Draw.HEIGHT / 2 - 4);
             Draw.centerText(" / ____|   /\\   |  \\/  |  ____|  / __ \\ \\    / /  ____|  __ \\ ", Draw.HEIGHT / 2 - 3);
             Draw.centerText("| |  __   /  \\  | \\  / | |__    | |  | \\ \\  / /| |__  | |__) |", Draw.HEIGHT / 2 - 2);
             Draw.centerText("| | |_ | / /\\ \\ | |\\/| |  __|   | |  | |\\ \\/ / |  __| |  _  / ", Draw.HEIGHT / 2 - 1);
@@ -145,7 +140,9 @@ namespace gladiatorspel
                     showingInventory = !showingInventory;
 
                 }
-                else if (showingInventory && (key.Key == ConsoleKey.D1 || key.Key == ConsoleKey.D2 || key.Key == ConsoleKey.D3 || key.Key == ConsoleKey.D4 || key.Key == ConsoleKey.D5 || key.Key == ConsoleKey.D6 || key.Key == ConsoleKey.D7 || key.Key == ConsoleKey.D8))
+                else if (showingInventory && (key.Key == ConsoleKey.D1 || key.Key == ConsoleKey.D2 ||
+                    key.Key == ConsoleKey.D3 || key.Key == ConsoleKey.D4 || key.Key == ConsoleKey.D5 ||
+                    key.Key == ConsoleKey.D6 || key.Key == ConsoleKey.D7 || key.Key == ConsoleKey.D8))
                 {
                     int selected = 0;
                     switch (key.Key)
@@ -177,7 +174,7 @@ namespace gladiatorspel
                     }
                     if (deleteMode)
                     {
-                        if(Player.inventory.inventoryList.Count > selected - 1)Player.inventory.inventoryList.RemoveAt(selected - 1);
+                        if (Player.inventory.inventoryList.Count > selected - 1) Player.inventory.inventoryList.RemoveAt(selected - 1);
                     }
                     else
                     {

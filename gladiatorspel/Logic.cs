@@ -5,7 +5,6 @@ using System.IO;
 using System.Security.Permissions;
 using System.Text;
 
-
 namespace gladiatorspel
 {
     public class Logic
@@ -14,12 +13,6 @@ namespace gladiatorspel
         readonly Random random = new Random();
         public ArrayList DefeatedOpponents = new ArrayList();
         private List<String> names = new List<String>();
-
-        public Logic()
-        {
-
-        }
-
         public String GetName()
         {
             if (names.Count == 0)
@@ -30,33 +23,13 @@ namespace gladiatorspel
             names.Remove(randomName);
             return randomName;
         }
-
-
-        public void DisplayMenu()
-        {
-            //Console.Clear();
-            //Console.WriteLine("\nMENU\n");
-            //Console.WriteLine("1. Fight" +
-            //   "\n2. Check inventory" +
-            //    "\n3. Quit");
-        }
-
-
         public Item Fight(Gladiator Player, Enemy Opponent)
         {
-            // press anything to attack
-
-
-            //you attack
-
             if (Player.GetHealth() > 0)
             {
                 int dmg = Player.Attack(Opponent);
                 Draw.ShowEnemyStats(Opponent, true, dmg);
             }
-
-
-            //enemy attacks
             if (Opponent.health > 0)
             {
                 int enemyDmg = Opponent.Attack(Player);
@@ -68,7 +41,6 @@ namespace gladiatorspel
                 DefeatedOpponents.Add(Opponent.name);
                 return Opponent.DropItem();
             }
-
             if (Player.GetHealth() <= 0)
             {
                 String textFile = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".txt";
@@ -78,12 +50,10 @@ namespace gladiatorspel
                     {
                         writer.WriteLine(opponent);
                     }
-                    writer.WriteLine(Player.credits);
+                    writer.WriteLine(Player.credits + " credits");
                 }
-                // YOU DIED
             }
             return null;
         }
-
     }
 }

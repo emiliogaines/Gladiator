@@ -7,22 +7,17 @@ namespace gladiatorspel
 {
     public class Gladiator
     {
-
-
         readonly Random random = new Random();
         public string name;
         public int baseHealth;
         public int baseStrength;
         public Inventory inventory = new Inventory();
         public int credits;
-
         public int AttackDamage { get; set; }
-
         public ArrayList ActivePotions = new ArrayList();
         public Item EquippedHelmet;
         public Item EquippedChest;
         public Item EquippedWeapon;
-
         public Gladiator(string Name)
         {
             name = Name;
@@ -31,13 +26,9 @@ namespace gladiatorspel
             credits = 0;
         }
 
-
         public int Attack(Enemy enemy)
         {
-            //Console.WriteLine("You attack!");
             AttackDamage = GetStrength();
-            //Console.WriteLine("You deal {0} damage.", AttackDamage);
-            //Console.WriteLine("--------------------");
             enemy.health = Math.Max(0, enemy.health - AttackDamage);
             return AttackDamage;
         }
@@ -59,7 +50,7 @@ namespace gladiatorspel
                     EquippedWeapon = item;
                     break;
                 case ItemType.POTION:
-                        UsePotion((Potions)item);
+                    UsePotion((Potions)item);
                     break;
             }
             inventory.inventoryList.Remove(item);
@@ -67,13 +58,12 @@ namespace gladiatorspel
         public void UsePotion(Potions potion)
         {
             ActivePotions.Add(potion);
-
         }
         public void RemoveActivePotion()
         {
-            foreach(Potions potion in ActivePotions)
+            foreach (Potions potion in ActivePotions)
             {
-                if(potion.BonusStrength > 0)
+                if (potion.BonusStrength > 0)
                 {
                     potion.BonusStrength = 0;
                 }
@@ -105,7 +95,7 @@ namespace gladiatorspel
         }
         public void DealDamage(int damage)
         {
-            baseHealth -= damage; 
+            baseHealth -= damage;
         }
         public void CheckInventory()
         {

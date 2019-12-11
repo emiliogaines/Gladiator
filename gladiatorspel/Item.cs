@@ -31,9 +31,7 @@ namespace gladiatorspel
         public int BonusStrength { get; set; }
         public ItemType Type { get; }
         public Double DropChance { get; }
-
         public string Name { get; set; }
-
         public static Item GetRandomItem()
         {
             Random random = new Random();
@@ -67,14 +65,8 @@ namespace gladiatorspel
         public Potions(string n, int temporaryHealthBoost, int temporaryStrengthBoost, ItemType t, Double d) :
             base(n, temporaryHealthBoost, temporaryStrengthBoost, t, d)
         {
-
         }
     }
-
-
-
-
-
 }
 public enum ItemType
 {
