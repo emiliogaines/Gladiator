@@ -116,12 +116,14 @@ namespace gladiatorspel
                         Draw.HidePlayerInventory(Player);
                         Draw.ShowEnemyStats(Opponent, false, 0);
                         Draw.FightOptions();
+                        deleteMode = false;
                     }
                     else
                     {
                         Draw.ShowPlayerInventory(Player, false);
                     }
                     showingInventory = !showingInventory;
+
                 }
                 else if (showingInventory && (key.Key == ConsoleKey.D1 || key.Key == ConsoleKey.D2 || key.Key == ConsoleKey.D3 || key.Key == ConsoleKey.D4 || key.Key == ConsoleKey.D5 || key.Key == ConsoleKey.D6 || key.Key == ConsoleKey.D7 || key.Key == ConsoleKey.D8))
                 {
@@ -155,16 +157,20 @@ namespace gladiatorspel
                     }
                     if (deleteMode)
                     {
-                        Player.inventory.inventoryList.RemoveAt(selected);
+                        if(Player.inventory.inventoryList.Count > selected - 1)Player.inventory.inventoryList.RemoveAt(selected - 1);
                     }
                     else
                     {
-                        Player.EquipItem(Player.inventory.getFromInventory(selected));
+                        Player.EquipItem(Player.inventory.getFromInventory(selected - 1));
                     }
                     Draw.ShowPlayerInventory(Player, deleteMode);
                     Draw.ShowPlayerStats(Player, false, 0, null);
                 }
-                else if (key.Key == ConsoleKey.D) deleteMode = !deleteMode;
+                else if (key.Key == ConsoleKey.D && showingInventory)
+                {
+                    deleteMode = !deleteMode;
+                    Draw.ShowPlayerInventory(Player, deleteMode);
+                }
                 else if (key.Key == ConsoleKey.Enter) break;
             }
         }
