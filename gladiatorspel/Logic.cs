@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.Permissions;
 using System.Text;
-[System.Runtime.InteropServices.ComVisible(true)]
-[System.Serializable]
+
 
 namespace gladiatorspel
 {
@@ -53,15 +52,15 @@ namespace gladiatorspel
 
             if (Player.health <= 0)
             {
-                File.WriteAllLines(@"C:\\Users\\moa\\Documents\\GitHub\\WriteLines.txt", (IEnumerable<string>)DefeatedOpponents.ToArray());
-                /*
-                using (StreamWriter writer = new StreamWriter("C:\\Users\\moa\\Documents\\GitHub", true))
+                //File.WriteAllLines(@"C:\\Users\\moa\\Documents\\GitHub\\WriteLines.txt", (IEnumerable<string>)DefeatedOpponents.ToArray());
+                
+                using (StreamWriter writer = new StreamWriter("C:\\Users\\moa\\Documents\\GitHub\\GAMESTATS.txt", true))
                 {
                     foreach(Object opponent in DefeatedOpponents)
                     {
                         writer.WriteLine(opponent.ToString());
                     }
-                }*/
+                }
                 // YOU DIED
             }
         }
