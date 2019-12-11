@@ -5,24 +5,26 @@ using System.Text;
 namespace gladiatorspel
 {
     public class Enemy
-    { 
+    {
         readonly Random random = new Random();
 
         public string name;
         public int baseHealth, health;
         public int baseStrength, strength;
         public int AttackDamage { get; set; }
-        private readonly string[] EnemyNames = { "Gurra Grr", "Shirley Clamp", "Mio Min Mio", "Mao Min Mao", "Sid Vicious", "Jack The Knife", "Hannibal" };
-        
-        
+        private readonly string[] EnemyNames = { "Gurra Grr", "Shirley Clamp", "Jack the Ripper", "Sid Vicious",
+            "Jack The Knife", "Hannibal", "Deathwing","The Lich King", "Polar Bear","Zombie", "Angry Pigeon",
+            "Mad Bee", "Confused Seagull","Ragnaros","Mr. Bean","Sherlock Golmes"};
+
+
 
 
         public Enemy(int round)
         {
             int level = 1 + (round / 3);
             name = EnemyNames[random.Next(EnemyNames.Length)];
-            baseHealth = random.Next(10,21);
-            baseStrength = random.Next(1,4);
+            baseHealth = random.Next(10, 21);
+            baseStrength = random.Next(1, 4);
 
             health = baseHealth * level;
             strength = baseStrength * level;
