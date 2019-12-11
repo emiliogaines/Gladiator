@@ -136,8 +136,8 @@ namespace gladiatorspel
             Console.Write(drawText);
             Console.ForegroundColor = ConsoleColor.White;
             finishedCursor();
-            if (didDmg) { 
-                ConsoleColor[] colors = { ConsoleColor.White, ConsoleColor.White, ConsoleColor.Gray, ConsoleColor.Gray, ConsoleColor.DarkGray, ConsoleColor.DarkGray, ConsoleColor.Black };
+            if (didDmg) {
+                ConsoleColor[] colors = { ConsoleColor.White, ConsoleColor.White, ConsoleColor.White, ConsoleColor.White, ConsoleColor.Gray, ConsoleColor.DarkGray, ConsoleColor.Black };
                 for (int i = 0; i < colors.Length; i++)
                 {
                     EnemyAttack(-dmg, colors[i], enemy);
@@ -159,7 +159,7 @@ namespace gladiatorspel
 
             if (loading)
             {
-                ConsoleColor[] colors = { ConsoleColor.White, ConsoleColor.White, ConsoleColor.Gray, ConsoleColor.Gray, ConsoleColor.DarkGray, ConsoleColor.DarkGray, ConsoleColor.Black };
+                ConsoleColor[] colors = { ConsoleColor.White, ConsoleColor.White, ConsoleColor.White, ConsoleColor.White, ConsoleColor.Gray, ConsoleColor.DarkGray, ConsoleColor.Black };
                 Char[] indicators = { '/', '-', '\\', '|', '/', '-', '\\' };
                 for(int i = 0; i < indicators.Length; i++)
                 {
@@ -268,7 +268,7 @@ namespace gladiatorspel
                 }
 
             }
-            Console.SetCursorPosition(WIDTH - MaxWidthFixed + 6, HEIGHT);
+            Console.SetCursorPosition(WIDTH - MaxWidthFixed + 2, HEIGHT);
             Console.Write("═");
             Console.SetCursorPosition(WIDTH, HEIGHT - Length + 1);
             Console.Write("║");
@@ -325,7 +325,7 @@ namespace gladiatorspel
         public static void GladiatorAttack(int dmg, ConsoleColor color)
         {
             String dmgText = dmg + " HP";
-            String attackText = "ATTACKS!";
+            String attackText = "YOU ATTACK!";
             prepCursor(WIDTH - 3 - dmgText.Length, HEIGHT - 3);
             Console.ForegroundColor = color;
             Console.Write(dmgText);

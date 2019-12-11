@@ -46,6 +46,7 @@ namespace gladiatorspel
                 Draw.ShowEnemyStats(Opponent, false, 0);
                 if (Round != 1) { 
                     Draw.centerText(Opponent.name + " approaches you.", 6);
+                    Draw.centerText("", 7);
                     Draw.centerText("< Press Enter to begin fight >", 8);
                     Draw.ShowTextPressEnter(" ", 9);
                 }
@@ -85,7 +86,7 @@ namespace gladiatorspel
                 Draw.centerText("You defeated " + Opponent.name + "!", 5);
                 if(droppedItem != null)Draw.centerText(Opponent.name + " dropped " + droppedItem.Name, 6);
                 Draw.centerText("< Press Enter to continue >", 7);
-                Draw.ShowTextPressEnter(" ", 7);
+                Draw.ShowTextPressEnter(" ", 8);
 
                 Player.inventory.addToInventory(droppedItem);
 

@@ -31,6 +31,19 @@ namespace gladiatorspel
 
         public string Name { get; set; }
 
+        public static Item getRandomItem()
+        {
+            Random random = new Random();
+            Double randomValue;
+            Item randomItem;
+            do
+            {
+                randomValue = random.NextDouble();
+                randomItem = ListOfItems[random.Next(ListOfItems.Length)];
+            } while (randomValue > randomItem.DropChance);
+            return randomItem;
+        }
+
         public Item(string name, int health, int strength, ItemType itemType, Double dropChance)
         {
             Name = name;
