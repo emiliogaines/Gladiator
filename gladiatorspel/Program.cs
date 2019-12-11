@@ -47,6 +47,8 @@ namespace gladiatorspel
 
             Draw.ShowRound(Round);
 
+            Logic logic = new Logic();
+
             while(Player.GetHealth() > 0)
             {
                 while (Opponent.health > 0){
@@ -55,8 +57,8 @@ namespace gladiatorspel
                     Draw.FightOptions();
                     handleInput(Player, Opponent);
                     Draw.ClearFightOptions();
-                    Draw.ShowEnemyStats(Opponent, true);
-
+                    
+                    logic.Fight(Player, Opponent);
 
                  }
 

@@ -25,12 +25,16 @@ namespace gladiatorspel
         {
             // press anything to attack
 
-            while (Opponent.health > 0 && Player.health > 0)
+            if (Opponent.health > 0 && Player.health > 0)
             {
                 //you attack
-                Player.Attack(Opponent);
+                int dmg = Player.Attack(Opponent);
+                Draw.GladiatorAttack(dmg);
+                Draw.ShowEnemyStats(Opponent, true);
                 //enemy attacks
-                Opponent.Attack(Player);
+                int enemyDmg = Opponent.Attack(Player);
+                Draw.EnemyAttack(enemyDmg);
+                Draw.ShowPlayerStats(Player);
             }
             if (Opponent.health <= 0)
             {

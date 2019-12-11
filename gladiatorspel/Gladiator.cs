@@ -7,6 +7,8 @@ namespace gladiatorspel
 {
     public class Gladiator
     {
+
+
         readonly Random random = new Random();
         public string name;
         public int baseHealth, health;
@@ -32,13 +34,14 @@ namespace gladiatorspel
         }
 
 
-        public void Attack(Enemy enemy)
+        public int Attack(Enemy enemy)
         {
-            Console.WriteLine("You attack!");
+            //Console.WriteLine("You attack!");
             AttackDamage = strength;
-            Console.WriteLine("You deal {0} damage.", AttackDamage);
-            Console.WriteLine("--------------------");
+            //Console.WriteLine("You deal {0} damage.", AttackDamage);
+            //Console.WriteLine("--------------------");
             enemy.health -= AttackDamage;
+            return AttackDamage;
         }
         public void EquipItem(Item item)
         {

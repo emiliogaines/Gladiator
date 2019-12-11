@@ -272,16 +272,35 @@ namespace gladiatorspel
             Draw.ShowText("".PadBoth(WIDTH - 2, ' '), 6);
         }
 
-        public static void EnemyAttacked(int dmg)
+        public static void EnemyAttack(int dmg)
         {
             playerActions.Add(-dmg);
             enemyActions.Add(dmg);
+            drawAttackHistory();
         }
 
-        public static void GladiatorAttacked(int dmg)
+        public static void GladiatorAttack(int dmg)
         {
             playerActions.Add(dmg);
             enemyActions.Add(-dmg);
+            drawAttackHistory();
+        }
+
+        public static void drawAttackHistory()
+        {
+            for (int i = 0; i < playerActions.Count; i++)
+            {
+                prepCursor(2, HEIGHT - 2 - playerActions.Count + i);
+                Console.Write(playerActions[i]);
+                finishedCursor();
+            }
+
+            for (int i = 0; i < enemyActions.Count; i++)
+            {
+                prepCursor(WIDTH - 3 - enemyActions[i].ToString().Length, HEIGHT - 2 - enemyActions.Count + i);
+                Console.Write(enemyActions[i]);
+                finishedCursor();
+            }
         }
     }
 }

@@ -28,14 +28,15 @@ namespace gladiatorspel
             strength = baseStrength * level;
         }
 
-        public void Attack(Gladiator player)
+        public int Attack(Gladiator player)
         {
-            Console.WriteLine("--------------------");
-            Console.WriteLine("{0} attacks!", name);
+            //Console.WriteLine("--------------------");
+            //Console.WriteLine("{0} attacks!", name);
             AttackDamage = strength;
-            Console.WriteLine("{0} dealt {1} damage to you.",name, AttackDamage);
-            Console.WriteLine("--------------------");
+            //Console.WriteLine("{0} dealt {1} damage to you.",name, AttackDamage);
+            //Console.WriteLine("--------------------");
             player.health -= AttackDamage;
+            return AttackDamage;
 
         }
         public Item DropItem()
