@@ -37,7 +37,7 @@ namespace gladiatorspel
         public int Attack(Enemy enemy)
         {
             //Console.WriteLine("You attack!");
-            AttackDamage = strength;
+            AttackDamage = GetStrength();
             //Console.WriteLine("You deal {0} damage.", AttackDamage);
             //Console.WriteLine("--------------------");
             enemy.health = Math.Max(0, enemy.health - AttackDamage);
