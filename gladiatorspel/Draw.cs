@@ -15,9 +15,7 @@ namespace gladiatorspel
         private static int enemyDrawWidth = 0;
         private static int gladiatorDrawWidth = 0;
 
-        private static Boolean hasInit = false;
-
-        private static void initWindowSettings()
+        public static void initWindowSettings()
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
@@ -29,12 +27,10 @@ namespace gladiatorspel
                 Console.SetBufferSize(WIDTH + 1, HEIGHT + 1);
                 Console.SetWindowSize(WIDTH + 1, HEIGHT + 1);
             }
-            hasInit = true;
         }
 
         public static void InitWindow()
         {
-            if (hasInit) initWindowSettings();
             
 
             String topLeftCorner = "╔";
