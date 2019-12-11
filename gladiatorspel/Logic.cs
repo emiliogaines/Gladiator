@@ -20,7 +20,7 @@ namespace gladiatorspel
 
         }
 
-        public String getName()
+        public String GetName()
         {
             if (names.Count == 0)
             {

@@ -39,13 +39,13 @@ namespace gladiatorspel
             AttackDamage = strength;
             //Console.WriteLine("{0} dealt {1} damage to you.",name, AttackDamage);
             //Console.WriteLine("--------------------");
-            player.dealDamage(AttackDamage);
+            player.DealDamage(AttackDamage);
             return AttackDamage;
 
         }
         public Item DropItem()
         {
-            Item droppedItem = (Item.ListOfItems[random.Next(Item.ListOfItems.Length)]);
+            Item droppedItem = Item.GetRandomItem();
             return droppedItem;
         }
     }

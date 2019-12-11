@@ -44,7 +44,7 @@ namespace gladiatorspel
             do
             {
                 Round++;
-                Opponent = new Enemy(logic.getName(), Round);
+                Opponent = new Enemy(logic.GetName(), Round);
                 Draw.ShowEnemyStats(Opponent, false, 0);
                 if (Round != 1) { 
                     Draw.centerText(Opponent.name + " approaches you.", 6);
@@ -90,7 +90,7 @@ namespace gladiatorspel
                 Draw.centerText("< Press Enter to continue >", 7);
                 Draw.ShowTextPressEnter(" ", 8);
 
-                Player.inventory.addToInventory(droppedItem);
+                Player.inventory.AddToInventory(droppedItem);
 
                 
                
@@ -181,7 +181,7 @@ namespace gladiatorspel
                     }
                     else
                     {
-                        Player.EquipItem(Player.inventory.getFromInventory(selected - 1));
+                        Player.EquipItem(Player.inventory.GetFromInventory(selected - 1));
                     }
                     Draw.ShowPlayerInventory(Player, deleteMode);
                     Draw.ShowPlayerStats(Player, false, 0, null);

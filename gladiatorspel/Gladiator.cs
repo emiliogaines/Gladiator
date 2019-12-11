@@ -47,15 +47,15 @@ namespace gladiatorspel
             switch (item.Type)
             {
                 case ItemType.HELMET:
-                    if (EquippedHelmet != null) inventory.addToInventory(EquippedHelmet);
+                    if (EquippedHelmet != null) inventory.AddToInventory(EquippedHelmet);
                     EquippedHelmet = item;
                     break;
                 case ItemType.CHEST:
-                    if (EquippedChest != null) inventory.addToInventory(EquippedChest);
+                    if (EquippedChest != null) inventory.AddToInventory(EquippedChest);
                     EquippedChest = item;
                     break;
                 case ItemType.WEAPON:
-                    if (EquippedWeapon != null) inventory.addToInventory(EquippedWeapon);
+                    if (EquippedWeapon != null) inventory.AddToInventory(EquippedWeapon);
                     EquippedWeapon = item;
                     break;
                 case ItemType.POTION:
@@ -103,7 +103,7 @@ namespace gladiatorspel
             if (EquippedWeapon != null) bonusStrength += EquippedWeapon.BonusStrength;
             return baseStrength + bonusStrength;
         }
-        public void dealDamage(int damage)
+        public void DealDamage(int damage)
         {
             baseHealth -= damage; 
         }

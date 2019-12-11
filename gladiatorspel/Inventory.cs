@@ -9,12 +9,12 @@ namespace gladiatorspel
     {
         public List<Item> inventoryList = new List<Item>();
 
-        public void addToInventory(Item item)
+        public void AddToInventory(Item item)
         {
             inventoryList.Add(item);
         }
 
-        public Item getFromInventory(int position)
+        public Item GetFromInventory(int position)
         {
             if(inventoryList.Count > position)
             {
