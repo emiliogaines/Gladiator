@@ -9,7 +9,7 @@ namespace gladiatorspel
     {
         public List<Item> inventoryList = new List<Item>();
 
-        public void addToInventory(Item item)
+        public void AddToInventory(Item item)
         {
             inventoryList.Add(item);
         }

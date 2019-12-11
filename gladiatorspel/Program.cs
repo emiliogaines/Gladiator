@@ -87,7 +87,7 @@ namespace gladiatorspel
                 Draw.centerText("< Press Enter to continue >", 7);
                 Draw.ShowTextPressEnter(" ", 7);
 
-                Player.inventory.addToInventory(droppedItem);
+                Player.inventory.AddToInventory(droppedItem);
 
                 
                
