@@ -6,8 +6,7 @@ namespace gladiatorspel
     {
 
         private static Boolean showingInventory;
-        private static Boolean fighting = true;
-        public static int Round = 1;
+        public static int Round = 0;
         static void Main(string[] args)
         {
             Draw.initWindowSettings();
@@ -24,7 +23,6 @@ namespace gladiatorspel
             name = Draw.ShowTextInput("What is your name?: ", 2);
             Draw.ShowText("That is a shit name. Please step into the arena " + name, 3);
             Gladiator Player = new Gladiator(name);
-            Enemy Opponent = new Enemy(Round);
 
             Random random = new Random();
             for(int r = 0; r < 5; r++)
@@ -38,30 +36,42 @@ namespace gladiatorspel
             Draw.ShowPlayerStats(Player, false, 0, null);
             Draw.ShowTextPressEnter("< Press Enter to step into the arena >", 5);
             Draw.ShowText("You step into the arena.", 5);
-            Draw.ShowText(Opponent.name + " approaches you.", 6);
-
-            Draw.ShowEnemyStats(Opponent, false, 0);
-
-            Draw.ShowTextPressEnter("< Press Enter to begin fight >", 8);
-            Draw.Clear();
-            Draw.InitWindow();
-
-            Draw.ShowRound(Round);
+           
 
             Logic logic = new Logic();
+            Enemy Opponent;
 
-            while(Player.GetHealth() > 0)
+            do
             {
-                while (Opponent.health > 0){
+                Round++;
+                Opponent = new Enemy(Round);
+                Draw.ShowEnemyStats(Opponent, false, 0);
+                if (Round != 1) { 
+                    Draw.centerText(Opponent.name + " approaches you.", 6);
+                    Draw.centerText("< Press Enter to begin fight >", 8);
+                    Draw.ShowTextPressEnter(" ", 9);
+                }
+                else
+                {
+                    Draw.ShowText(Opponent.name + " approaches you.", 6);
+                    Draw.ShowText("< Press Enter to begin fight >", 8);
+                    Draw.ShowTextPressEnter(" ", 9);
+                }
+                Draw.Clear();
+                Draw.InitWindow();
+
+                Draw.ShowRound(Round);
+                while (Opponent.health > 0)
+                {
                     Draw.ShowPlayerStats(Player, false, 0, null);
                     Draw.ShowEnemyStats(Opponent, false, 0);
                     Draw.FightOptions();
                     handleInput(Player, Opponent);
                     Draw.ClearFightOptions();
-                    
+
                     logic.Fight(Player, Opponent);
 
-                 }
+                }
 
                 Player.RemoveActivePotion();
                 Draw.Clear();
@@ -74,19 +84,9 @@ namespace gladiatorspel
                 Draw.centerText("< Press Enter to continue >", 6);
                 Draw.ShowTextPressEnter(" ", 7);
 
-                Round++;
-                Opponent = new Enemy(Round);
                 
-
-                Draw.centerText(Opponent.name + " approaches you.", 5);
-                Draw.ShowEnemyStats(Opponent, false, 0);
-                Draw.centerText("< Press Enter to begin fight >", 6);
-                Draw.ShowTextPressEnter(" ", 7);
-
-                Draw.Clear();
-                Draw.InitWindow();
-                Draw.ShowRound(Round);
-            }
+               
+            } while (Player.GetHealth() > 0);
 
 
 
