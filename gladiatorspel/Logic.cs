@@ -47,7 +47,7 @@ namespace gladiatorspel
             }
             if (Player.health <= 0)
             {
-                using (StreamWriter writer = new StreamWriter("C:\\Users\\moa\\Documents", true))
+                using (StreamWriter writer = new StreamWriter("C:\\Users\\moa\\Documents\\GitHub", true))
                 {
                     foreach(Object opponent in DefeatedOpponents)
                     {
