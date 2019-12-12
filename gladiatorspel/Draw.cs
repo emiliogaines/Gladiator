@@ -106,6 +106,7 @@ namespace gladiatorspel
 
         public static String ShowTextInput(String text, int line)
         {
+            while (Console.KeyAvailable) Console.ReadKey(true);
             ShowText(text, line);
             String input = "";
             while (true)

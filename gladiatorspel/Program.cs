@@ -15,7 +15,7 @@ namespace gladiatorspel
             Draw.displayStartup();
             Draw.ShowText("Greetings Gladiator!", 1);
             name = Draw.ShowTextInput("What is your name?: ", 2);
-            Draw.ShowText("Oof. Please step into the arena " + name, 3);
+            Draw.ShowText("Huh... Please step into the arena " + name, 3);
 
             Gladiator Player = new Gladiator(name);
 
@@ -69,7 +69,7 @@ namespace gladiatorspel
                 Draw.ShowPlayerStats(Player, false, 0, null);
                 Draw.ShowEnemyStats(Opponent, false, 0);
                 Draw.centerText("You defeated " + Opponent.name + "!", 5);
-                if (droppedItem != null) Draw.centerText(Opponent.name + " dropped " + droppedItem.Name + " (" + droppedItem.Rarity + ")", 6);
+                if (droppedItem != null) Draw.centerText(Opponent.name + " dropped " + droppedItem.Name + " [" + droppedItem.Rarity + "]", 6);
                 Draw.centerText("< Press Enter to continue >", 7);
                 Draw.ShowTextPressEnter(" ", 8);
                 Player.inventory.AddToInventory(droppedItem);
@@ -95,6 +95,7 @@ namespace gladiatorspel
         }
         private static void handleInput(Gladiator Player, Enemy Opponent)
         {
+            while (Console.KeyAvailable) Console.ReadKey(true);
             Boolean deleteMode = false;
             while (true)
             {
