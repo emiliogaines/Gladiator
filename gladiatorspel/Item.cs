@@ -32,10 +32,12 @@ namespace gladiatorspel
         public ItemType Type { get; }
         public Double DropChance { get; }
         public string Name { get; set; }
+
+        public string Rarity { get; }
         public static Item GetRandomItem()
         {
             Random random = new Random();
-            Double randomValue;
+            double randomValue;
             Item randomItem;
             do
             {
@@ -52,6 +54,21 @@ namespace gladiatorspel
             BonusStrength = strength;
             Type = itemType;
             DropChance = Math.Clamp(dropChance, 0, 1);
+            if(DropChance > 0.35)
+            {
+                Rarity = "COMMON";
+            }else if (DropChance > 0.25)
+            {
+                Rarity = "UNCOMMON";
+            }
+            else if(DropChance > 0.05)
+            {
+                Rarity = "RARE";
+            }
+            else
+            {
+                Rarity = "ULTRA RARE";
+            }
         }
 
         public override String ToString()
