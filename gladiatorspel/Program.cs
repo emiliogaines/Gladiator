@@ -15,7 +15,7 @@ namespace gladiatorspel
             Draw.displayStartup();
             Draw.ShowText("Greetings Gladiator!", 1);
             name = Draw.ShowTextInput("What is your name?: ", 2);
-            Draw.ShowText("That is a shit name. Please step into the arena " + name, 3);
+            Draw.ShowText("Oof. Please step into the arena " + name, 3);
 
             Gladiator Player = new Gladiator(name);
 
@@ -69,7 +69,7 @@ namespace gladiatorspel
                 Draw.ShowPlayerStats(Player, false, 0, null);
                 Draw.ShowEnemyStats(Opponent, false, 0);
                 Draw.centerText("You defeated " + Opponent.name + "!", 5);
-                if (droppedItem != null) Draw.centerText(Opponent.name + " dropped " + droppedItem.Name, 6);
+                if (droppedItem != null) Draw.centerText(Opponent.name + " dropped " + droppedItem.Name + " (" + (droppedItem.DropChance * 100) + "%)", 6);
                 Draw.centerText("< Press Enter to continue >", 7);
                 Draw.ShowTextPressEnter(" ", 8);
                 Player.inventory.AddToInventory(droppedItem);
@@ -83,7 +83,7 @@ namespace gladiatorspel
             Draw.centerText("| |__| |/ ____ \\| |  | | |____  | |__| | \\  /  | |____| | \\ \\ ", Draw.HEIGHT / 2);
             Draw.centerText(" \\_____/_/    \\_\\_|  |_|______|  \\____/   \\/   |______|_|  \\_\\", Draw.HEIGHT / 2 + 1);
             Draw.centerText("You survived to Round (" + Round + ") and gathered " + Player.credits + " credits!", Draw.HEIGHT / 2 + 3);
-            Environment.Exit(0);
+            while (true) { }
             /*
               __  __    ___       _        ___   ____       ____   ____    ___   _   _    ____   _____
              |  \/  |  / _ \     / \      |_ _| / ___|     / ___| |  _ \  |_ _| | \ | |  / ___| | ____|

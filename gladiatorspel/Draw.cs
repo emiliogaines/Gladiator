@@ -8,6 +8,8 @@ namespace gladiatorspel
         const String Title = "[ GLADIATOR ]";
         public static int WIDTH;
         public static int HEIGHT;
+        public static int REAL_WIDTH;
+        public static int REAL_HEIGHT;
 
         private static List<int> playerActions = new List<int> ();
         private static List<int> enemyActions = new List<int>();
@@ -20,19 +22,21 @@ namespace gladiatorspel
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            WIDTH = Console.WindowWidth;
-            HEIGHT = Console.WindowHeight;
+            REAL_WIDTH = Console.WindowWidth;
+            REAL_HEIGHT = Console.WindowHeight;
+            WIDTH = REAL_WIDTH - 1;
+            HEIGHT = REAL_HEIGHT - 1;
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Console.SetBufferSize(WIDTH + 1, HEIGHT + 1);
-                Console.SetWindowSize(WIDTH + 1, HEIGHT + 1);
-                HEIGHT -= 1;
+                /*Console.SetBufferSize(WIDTH + 1, HEIGHT);
+                Console.SetWindowSize(WIDTH + 1, HEIGHT);*/
+                //HEIGHT -= 1;
+                //WIDTH -= 1;
             }
         }
 
         public static void InitWindow()
         {
-            
 
             String topLeftCorner = "╔";
             String topRightCorner = "╗";
@@ -94,7 +98,7 @@ namespace gladiatorspel
         {
             const int padding = 2;
             Console.SetCursorPosition(padding, line);
-            Console.Write(text.PadLeft(WIDTH - padding - 2));
+            Console.Write(text.PadLeft(WIDTH - padding - 1));
             Console.SetCursorPosition(WIDTH, line);
             Console.Write("║");
             Console.SetCursorPosition(WIDTH, HEIGHT);
@@ -108,8 +112,9 @@ namespace gladiatorspel
             {
                 var key = Console.ReadKey(true);
                 if (key.Key == ConsoleKey.Enter) break;
-                if (key.Key == ConsoleKey.Backspace && input.Length > 0) input.Remove(input.Length - 1, 1);
+                if (key.Key == ConsoleKey.Backspace && input.Length > 0) input = input.Remove(input.Length - 1, 1);
                 else if (key.Key != ConsoleKey.Backspace) input += key.KeyChar;
+                
                 ShowText(text + input, line);
             }
             return input;
@@ -127,12 +132,12 @@ namespace gladiatorspel
 
         public static void ShowPlayerStats(Gladiator gladiator, Boolean didDmg, int dmg, Enemy enemy)
         {
-            prepCursor(2, HEIGHT - 2);
+            prepCursor(2, HEIGHT - 1);
             Console.Write(" ".PadRight(gladiatorDrawWidth));
             Console.ForegroundColor = ConsoleColor.Green;
             String drawText = gladiator.name + " [HP: " + gladiator.GetHealth() + " Attack: " + gladiator.GetStrength() + "]";
             gladiatorDrawWidth = drawText.Length;
-            prepCursor(2, HEIGHT - 2);
+            prepCursor(2, HEIGHT - 1);
             Console.Write(drawText);
             Console.ForegroundColor = ConsoleColor.White;
             finishedCursor();
@@ -150,10 +155,10 @@ namespace gladiatorspel
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             String enemyText = enemy.name + " [HP: " + enemy.health + " Attack: " + enemy.strength + "]";
-            prepCursor(WIDTH - 2 - enemyDrawWidth, HEIGHT - 2);
+            prepCursor(WIDTH - 1 - enemyDrawWidth, HEIGHT - 1);
             Console.Write(" ".PadRight(enemyDrawWidth));
             enemyDrawWidth = enemyText.Length;
-            prepCursor(WIDTH - 2 - enemyText.Length, HEIGHT - 2);
+            prepCursor(WIDTH - 1 - enemyText.Length, HEIGHT - 1);
             Console.Write(enemyText);
             Console.ForegroundColor = ConsoleColor.White;
 
@@ -163,13 +168,13 @@ namespace gladiatorspel
                 Char[] indicators = { '/', '-', '\\', '|', '/', '-', '\\' };
                 for(int i = 0; i < indicators.Length; i++)
                 {
-                    prepCursor(WIDTH - 7 - enemyText.Length, HEIGHT - 2);
+                    prepCursor(WIDTH - 6 - enemyText.Length, HEIGHT - 1);
                     Console.Write("[" + indicators[i] + "] ");
                     finishedCursor();
                     GladiatorAttack(-dmg, colors[i]);
                     System.Threading.Thread.Sleep(250);
                 }
-                prepCursor(WIDTH - 7 - enemyText.Length, HEIGHT - 2);
+                prepCursor(WIDTH - 6 - enemyText.Length, HEIGHT - 1);
                 Console.Write("    ");
             }
 
@@ -193,7 +198,8 @@ namespace gladiatorspel
                     MaxWidth = item.ToString().Length + MaxWidthEquip;
                 }
             }
-            int MaxWidthFixed = MaxWidth + 8;
+            int MaxWidthFixed = MaxWidth + 7;
+            int curserPosWidth = MaxWidthFixed - 1;
             String inventoryTitle;
             if (deleteMode)
             {
@@ -204,7 +210,7 @@ namespace gladiatorspel
                 inventoryTitle = "[ INVENTORY ]";
             }
             String equippedTitle = "[ EQUIPPED  ]";
-            Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 6 - Length);
+            Console.SetCursorPosition(WIDTH - curserPosWidth, HEIGHT - 5 - Length);
             Console.Write("╔" + equippedTitle.PadBoth(MaxWidthFixed, '═') + "╣");
             for (int i = 0; i < 3; i++)
             {
@@ -217,11 +223,11 @@ namespace gladiatorspel
                 {
                     itemName = "";
                 }
-                String drawString = "║ " + equippedPositions[i] + ": " + itemName.PadLeft(MaxWidth - equippedPositions[i].Length + 2);
-                Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 5 - Length + i);
+                String drawString = "║ " + equippedPositions[i] + ": " + itemName.PadLeft(MaxWidth - equippedPositions[i].Length + 1);
+                Console.SetCursorPosition(WIDTH - curserPosWidth, HEIGHT - 4 - Length + i);
                 Console.Write(drawString);
             }
-            Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 2 - Length);
+            Console.SetCursorPosition(WIDTH - curserPosWidth, HEIGHT - 1 - Length);
             Console.Write("╠" + inventoryTitle.PadBoth(MaxWidthFixed, '═') + "╣");
             for (int i = 0; i < 8; i++)
             {
@@ -231,12 +237,12 @@ namespace gladiatorspel
                     itemName = (player.inventory.inventoryList[i] as Item).ToString();
                 }
                 String drawString = "║ " + string.Format("{0:D2}", i + 1) + ") " + itemName.PadLeft(MaxWidth);
-                Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 1 - Length + i);
+                Console.SetCursorPosition(WIDTH - curserPosWidth, HEIGHT - Length + i);
                 Console.Write(drawString);
                 
             }
             
-            Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT);
+            Console.SetCursorPosition(WIDTH - curserPosWidth, HEIGHT);
             Console.Write("╩");
             Console.SetCursorPosition(WIDTH, HEIGHT);
         }
@@ -259,20 +265,21 @@ namespace gladiatorspel
                 }
             }
             int MaxWidthFixed = MaxWidth + 8;
+            int curserPosWidth = MaxWidthFixed - 1;
             for (int i = 0; i < Length; i++)
             {
-                Console.SetCursorPosition(WIDTH - MaxWidthFixed, HEIGHT - 2 - i);
+                Console.SetCursorPosition(WIDTH - curserPosWidth, HEIGHT - 1 - i);
                 for(int n = WIDTH - MaxWidthFixed; n < WIDTH - 1; n++)
                 {
                     Console.Write(" ");
                 }
 
             }
-            Console.SetCursorPosition(WIDTH - MaxWidthFixed + 2, HEIGHT);
+            Console.SetCursorPosition(WIDTH - curserPosWidth + 3, HEIGHT);
             Console.Write("═");
-            Console.SetCursorPosition(WIDTH, HEIGHT - Length + 1);
+            Console.SetCursorPosition(WIDTH, HEIGHT - Length + 2);
             Console.Write("║");
-            Console.SetCursorPosition(WIDTH, HEIGHT - Length + 5);
+            Console.SetCursorPosition(WIDTH, HEIGHT - Length + 6);
             Console.Write("║");
             Console.SetCursorPosition(WIDTH, HEIGHT);
 
@@ -281,15 +288,15 @@ namespace gladiatorspel
         public static void ShowRound(int round)
         {
             String levelText = "[ ROUND " + round + " ]";
-            Draw.ShowText(levelText.PadBoth(WIDTH, ' '), 1);
+            Draw.ShowText(levelText.PadBoth(WIDTH - 1, ' '), 1);
         }
 
         public static void Clear()
         {
-            for(int i = 0; i < HEIGHT; i++)
+            for(int i = 0; i < HEIGHT + 1; i++)
             {
                 Console.SetCursorPosition(0, i);
-                Console.WriteLine(" ".PadRight(WIDTH));
+                Console.WriteLine(" ".PadRight(WIDTH + 1));
             }
             Console.SetCursorPosition(WIDTH, HEIGHT);
         }
@@ -302,7 +309,7 @@ namespace gladiatorspel
         public static void centerText(String text, int line)
         {
             prepCursor(1, line);
-            Console.Write(text.PadBoth(WIDTH, ' '));
+            Console.Write(text.PadBoth(WIDTH + 1, ' '));
             finishedCursor();
         }
 
@@ -315,10 +322,10 @@ namespace gladiatorspel
         {
             String dmgText = dmg + " HP";
             String attackText = "ATTACKS!";
-            prepCursor(2, HEIGHT - 3);
+            prepCursor(2, HEIGHT - 2);
             Console.ForegroundColor = color;
             Console.Write(dmgText);
-            prepCursor(WIDTH - 3 - attackText.Length, HEIGHT - 3);
+            prepCursor(WIDTH - 1 - attackText.Length, HEIGHT - 2);
             Console.Write(attackText);
             Console.ForegroundColor = ConsoleColor.White;
             finishedCursor();
@@ -328,10 +335,10 @@ namespace gladiatorspel
         {
             String dmgText = dmg + " HP";
             String attackText = "YOU ATTACK!";
-            prepCursor(WIDTH - 3 - dmgText.Length, HEIGHT - 3);
+            prepCursor(WIDTH - 1 - dmgText.Length, HEIGHT - 2);
             Console.ForegroundColor = color;
             Console.Write(dmgText);
-            prepCursor(2, HEIGHT - 3);
+            prepCursor(2, HEIGHT - 2);
             Console.Write(attackText);
             Console.ForegroundColor = ConsoleColor.White;
             finishedCursor();
