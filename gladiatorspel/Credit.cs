@@ -16,8 +16,8 @@ namespace gladiatorspel
         }
         public void BattleCredit(Gladiator gladiator, int level)
         {
-            gladiator.credits += Credits * level;
             latestDrop = Credits * level;
+            gladiator.credits += latestDrop;
         }
         public void DeadEnemyMoneyDrop(Gladiator gladiator)
         {

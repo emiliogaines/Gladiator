@@ -22,10 +22,10 @@ namespace gladiatorspel
             new Item("Kitten Mitten",3,9,ItemType.WEAPON,0.45),
             new Item("Baseball Glove",15,5,ItemType.WEAPON,0.38),
             new Item("AK-47",0,60,ItemType.WEAPON,0.01),
-            new Potions("Small Health Potion",15,0,ItemType.POTION,0.20),
-            new Potions("Large Health Potion",35,0,ItemType.POTION,0.15),
-            new Potions("Small Strength Potion",0,15,ItemType.POTION,0.35),
-            new Potions("Large Strength Potion",0,35,ItemType.POTION,0.30)
+            new Potions("Small Health Potion",15,0,ItemType.POTION_HEALTH,0.20),
+            new Potions("Large Health Potion",35,0,ItemType.POTION_HEALTH,0.15),
+            new Potions("Small Strength Potion",0,15,ItemType.POTION_STRENGTH,0.35),
+            new Potions("Large Strength Potion",0,35,ItemType.POTION_STRENGTH,0.30)
         };
         public int BonusHealth { get; set; }
         public int BonusStrength { get; set; }
@@ -90,5 +90,6 @@ public enum ItemType
     HELMET,
     CHEST,
     WEAPON,
-    POTION
+    POTION_STRENGTH,
+    POTION_HEALTH
 }

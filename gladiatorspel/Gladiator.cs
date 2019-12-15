@@ -49,7 +49,10 @@ namespace gladiatorspel
                     if (EquippedWeapon != null) inventory.AddToInventory(EquippedWeapon);
                     EquippedWeapon = item;
                     break;
-                case ItemType.POTION:
+                case ItemType.POTION_HEALTH:
+                    UsePotion((Potions)item);
+                    break;
+                case ItemType.POTION_STRENGTH:
                     UsePotion((Potions)item);
                     break;
             }
@@ -63,9 +66,9 @@ namespace gladiatorspel
         {
             foreach (Potions potion in ActivePotions)
             {
-                if (potion.BonusStrength > 0)
+                if (potion.Type == ItemType.POTION_STRENGTH)
                 {
-                    potion.BonusStrength = 0;
+                    ActivePotions.Remove(potion);
                 }
             }
         }
