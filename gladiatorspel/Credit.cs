@@ -8,7 +8,7 @@ namespace gladiatorspel
     {
         Random random = new Random();
         public int Credits { get; set; }
-        public int Money;
+        public int Money, latestDrop = 0;
         public Credit()
         {
             Credits = 100;
@@ -17,6 +17,7 @@ namespace gladiatorspel
         public void BattleCredit(Gladiator gladiator, int level)
         {
             gladiator.credits += Credits * level;
+            latestDrop = Credits * level;
         }
         public void DeadEnemyMoneyDrop(Gladiator gladiator)
         {

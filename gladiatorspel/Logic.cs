@@ -55,5 +55,10 @@ namespace gladiatorspel
             }
             return null;
         }
+
+        public Credit GetCredit()
+        {
+            return credit;
+        }
     }
 }

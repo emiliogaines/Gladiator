@@ -69,7 +69,7 @@ namespace gladiatorspel
                 Draw.ShowPlayerStats(Player, false, 0, null);
                 Draw.ShowEnemyStats(Opponent, false, 0);
                 Draw.centerText("You defeated " + Opponent.name + "!", 5);
-                if (droppedItem != null) Draw.centerText(Opponent.name + " dropped " + droppedItem.Name + " [" + droppedItem.Rarity + "]", 6);
+                if (droppedItem != null) Draw.centerText(Opponent.name + " dropped " + droppedItem.Name + " [" + droppedItem.Rarity + "] " + "and " + logic.GetCredit().latestDrop + " Credits", 6);
                 Draw.centerText("< Press Enter to continue >", 7);
                 Draw.ShowTextPressEnter(" ", 8);
                 Player.inventory.AddToInventory(droppedItem);
