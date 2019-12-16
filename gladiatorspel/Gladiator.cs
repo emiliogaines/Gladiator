@@ -64,7 +64,7 @@ namespace gladiatorspel
         }
         public void RemoveActivePotion()
         {
-            foreach (Potions potion in ActivePotions)
+            foreach (Potions potion in ActivePotions.ToArray())
             {
                 if (potion.Type == ItemType.POTION_STRENGTH)
                 {
