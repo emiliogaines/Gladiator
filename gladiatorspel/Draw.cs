@@ -26,13 +26,6 @@ namespace gladiatorspel
             REAL_HEIGHT = Console.WindowHeight;
             WIDTH = REAL_WIDTH - 1;
             HEIGHT = REAL_HEIGHT - 1;
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                /*Console.SetBufferSize(WIDTH + 1, HEIGHT);
-                Console.SetWindowSize(WIDTH + 1, HEIGHT);*/
-                //HEIGHT -= 1;
-                //WIDTH -= 1;
-            }
         }
 
         public static void InitWindow()
