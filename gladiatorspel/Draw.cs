@@ -11,9 +11,6 @@ namespace gladiatorspel
         public static int REAL_WIDTH;
         public static int REAL_HEIGHT;
 
-        private static List<int> playerActions = new List<int> ();
-        private static List<int> enemyActions = new List<int>();
-
         private static int enemyDrawWidth = 0;
         private static int gladiatorDrawWidth = 0;
 
